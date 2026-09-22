@@ -1,25 +1,104 @@
 :root{--color-primary:#bc5379;--color-secondary:#f5cbd8;--color-background:#fffaf9;--color-surface:#fff;--color-text:#2f252b;--color-muted:#76676e;--color-accent:#e884aa;--color-border:rgba(104,61,79,.16);--color-chrome:#d8c7cf;--shadow:0 18px 50px rgba(115,55,81,.12);--radius:1.5rem;--serif:Georgia,"Times New Roman",serif;--sans:Arial,Helvetica,sans-serif}
 *{box-sizing:border-box}
+
 html{scroll-behavior:smooth}
+
 body{margin:0;background:var(--color-background);color:var(--color-text);font-family:var(--sans);line-height:1.5;overflow-x:hidden}
-a{color:inherit;text-decoration:none}
+
+a{
+    color:inherit;
+    text-decoration:none
+}
+
 button{font:inherit}
-img{display:block;max-width:100%}
-.container{width:min(1120px,calc(100% - 2.5rem));margin:auto}
-.skip-link{position:absolute;left:1rem;top:-5rem;background:#fff;padding:.75rem;z-index:10}
+
+img{
+    display:block;
+    max-width:100%}
+
+.container{
+    width:min(1120px,calc(100% - 2.5rem));
+    margin:auto
+}
+
+.skip-link{
+    position:absolute;
+    left:1rem;top:-5rem;
+    background:#fff;
+    padding:.75rem;
+    z-index:10
+}
+
 .skip-link:focus{top:1rem}
+
 .section{padding:7rem 0}
-.eyebrow{letter-spacing:.14em;font-size:.7rem;font-weight:700;color:var(--color-primary);margin:0 0 1rem;text-transform:uppercase}
-.sparkle{font-size:1rem;margin-right:.3rem}
-h1,h2,h3,p{margin-top:0}
-h1,h2{font-family:var(--serif);font-weight:400;line-height:.98;letter-spacing:-.05em}
-h1{font-size:clamp(3.7rem,8vw,7.2rem);margin-bottom:1.5rem}
-h2{font-size:clamp(2.7rem,5.3vw,5rem);margin-bottom:1.3rem}
-h1 em,h2 em{color:var(--color-primary);font-weight:400}
-.button{display:inline-flex;align-items:center;justify-content:center;gap:.65rem;border-radius:999px;padding:.9rem 1.35rem;font-weight:700;font-size:.88rem;transition:transform .25s,box-shadow .25s,background .25s}
-.button:hover{transform:translateY(-3px)}
-.button-primary{background:var(--color-primary);color:white;box-shadow:0 8px 20px rgba(188,83,121,.28)}
-.button-ghost{border:1px solid var(--color-border);background:rgba(255,255,255,.6)}
+
+.eyebrow{
+    letter-spacing:.14em;
+    font-size:.7rem;
+    font-weight:700;
+    color:var(--color-primary)
+    ;margin:0 0 1rem;
+    text-transform:uppercase}
+
+.sparkle{
+    font-size:1rem;
+    margin-right:.3rem
+}
+
+h1,h2,h3,p{
+    margin-top:0
+}
+
+h1,h2{
+    font-family:var(--serif);
+    font-weight:400;
+    line-height:.98;
+    letter-spacing:-.05em
+}
+
+h1{
+    font-size:clamp(3.7rem,8vw,7.2rem);
+    margin-bottom:1.5rem
+}
+
+h2{
+    font-size:clamp(2.7rem,5.3vw,5rem);
+    margin-bottom:1.3rem
+}
+
+h1 em,h2 em{
+    color:var(--color-primary);
+    font-weight:400
+}
+
+.button{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:.65rem;
+    border-radius:999px;
+    padding:.9rem 1.35rem;
+    font-weight:700;
+    font-size:.88rem;
+    transition:transform .25s,box-shadow .25s, .25s
+    }
+
+.button:hover{
+    transform:translateY(-3px)
+}
+
+.button-primary{
+    background:var(--color-primary);
+    color:white;
+    box-shadow:0 8px 20px rgba(188,83,121,.28)
+}
+
+.button-ghost{
+    border:1px solid var(--color-border);
+    background:rgba(255,255,255,.6)
+}
+
 .button-dark{background:var(--color-text);color:white}
 .text-link{display:inline-flex;gap:.6rem;align-items:center;font-weight:bold;border-bottom:1px solid currentColor;padding-bottom:.2rem}
 .site-header{position:fixed;z-index:5;inset:0 0 auto;transition:background .3s,box-shadow .3s}
@@ -189,4 +268,218 @@ h1{font-size:3.25rem}
   letter-spacing: .08em;
   text-transform: uppercase;
   backdrop-filter: blur(6px);
+}
+
+/* =========================================================
+   AGENDAMENTO
+   ========================================================= */
+
+.booking-modal {
+  width: min(92vw, 560px);
+  max-width: 560px;
+  max-height: 90vh;
+  padding: 0;
+  border: 1px solid var(--color-border);
+  border-radius: 1.6rem;
+  background: var(--color-background);
+  color: var(--color-text);
+  box-shadow: 0 30px 90px rgba(65, 31, 45, .24);
+  overflow: hidden;
+}
+
+.booking-modal::backdrop {
+  background: rgba(47, 37, 43, .48);
+  backdrop-filter: blur(8px);
+}
+
+.booking-modal-content {
+  position: relative;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 2rem;
+}
+
+.modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 2.3rem;
+  height: 2.3rem;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--color-border);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, .8);
+  color: var(--color-text);
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: transform .2s, var(--color-background) .2s;
+  z-index: 2;
+}
+
+.modal-close:hover {
+  transform: rotate(8deg) scale(1.05);
+  background: var(--color-secondary);
+}
+
+.booking-header {
+  padding-right: 2.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.booking-header h2 {
+  font-size: clamp(2rem, 7vw, 3rem);
+  margin-bottom: .7rem;
+}
+
+.booking-header p:last-child {
+  color: var(--color-muted);
+  margin-bottom: 0;
+}
+
+.booking-service-summary {
+  display: grid;
+  grid-template-columns: 1.5fr .8fr .8fr;
+  gap: .7rem;
+  margin-bottom: 1.5rem;
+}
+
+.booking-service-summary > div {
+  min-width: 0;
+  padding: .9rem;
+  border: 1px solid var(--color-border);
+  border-radius: 1rem;
+  background: linear-gradient(145deg, #fff, #fff7fa);
+}
+
+.booking-service-summary span {
+  display: block;
+  margin-bottom: .3rem;
+  color: var(--color-muted);
+  font-size: .65rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.booking-service-summary strong {
+  display: block;
+  font-family: var(--serif);
+  font-size: 1rem;
+  line-height: 1.15;
+}
+
+#booking-form {
+  display: grid;
+  gap: 1rem;
+}
+
+.form-field {
+  display: grid;
+  gap: .45rem;
+}
+
+.form-field label {
+  font-size: .78rem;
+  font-weight: 700;
+}
+
+.form-field label span {
+  color: var(--color-muted);
+  font-weight: 400;
+}
+
+.form-field input,
+.form-field select,
+.form-field textarea {
+  width: 100%;
+  border: 1px solid var(--color-border);
+  border-radius: .9rem;
+  background: rgba(255, 255, 255, .9);
+  color: var(--color-text);
+  padding: .85rem .95rem;
+  font: inherit;
+  outline: none;
+  transition: border-color .2s, box-shadow .2s, background .2s;
+}
+
+.form-field input:focus,
+.form-field select:focus,
+.form-field textarea:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(188, 83, 121, .12);
+  background: #fff;
+}
+
+.form-field textarea {
+  resize: vertical;
+  min-height: 5.5rem;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.booking-note {
+  margin: .15rem 0 0;
+  padding: .8rem .9rem;
+  border-radius: .8rem;
+  background: rgba(245, 203, 216, .35);
+  color: var(--color-muted);
+  font-size: .75rem;
+  line-height: 1.45;
+}
+
+.booking-submit {
+  width: 100%;
+  border: 0;
+  cursor: pointer;
+  margin-top: .25rem;
+}
+
+.booking-submit:disabled {
+  opacity: .55;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.booking-empty {
+  color: var(--color-muted);
+  font-size: .8rem;
+}
+
+@media (max-width: 520px) {
+  .booking-modal-content {
+    padding: 1.4rem;
+  }
+
+  .booking-service-summary {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .booking-service-summary > div:first-child {
+    grid-column: 1 / -1;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 390px) {
+  .booking-modal-content {
+    padding: 1.2rem;
+  }
+
+  .booking-service-summary {
+    gap: .5rem;
+  }
+
+  .booking-service-summary > div {
+    padding: .75rem;
+  }
 }
