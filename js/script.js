@@ -1,552 +1,875 @@
-(() => {
-  const whatsappNumber = "5531972598553";
+/* =========================================================
+   SOPHIA.ARTNAILS
+   JAVASCRIPT COMPLETO
+========================================================= */
 
-  const generalMessage =
-    "Olá, Sophia! Gostaria de agendar um horário. Vim pelo site.";
+document.addEventListener("DOMContentLoaded", () => {
 
-  const whatsappUrl = (message) =>
-    `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+  /* =======================================================
+     CONFIGURAÇÃO
+  ======================================================= */
 
-  /* =========================================================
-     ELEMENTOS PRINCIPAIS
-     ========================================================= */
+  const WHATSAPP_NUMBER = "5531972598553";
 
-  const header = document.querySelector(".site-header");
-  const toggle = document.querySelector(".menu-toggle");
-  const menu = document.querySelector(".nav-links");
 
-  /* =========================================================
-     WHATSAPP GERAL
-     ========================================================= */
-
-  document
-    .querySelectorAll('[data-whatsapp="general"]')
-    .forEach((link) => {
-      link.href = whatsappUrl(generalMessage);
-      link.target = "_blank";
-      link.rel = "noopener noreferrer";
-    });
-
-  /* =========================================================
+  /* =======================================================
      MENU MOBILE
-     ========================================================= */
+  ======================================================= */
+
+  const menuButton =
+    document.querySelector(
+      ".mobile-menu-button"
+    );
+
+  const menu =
+    document.querySelector(
+      "#site-menu"
+    );
+
 
   const closeMenu = () => {
-    if (!menu || !toggle) return;
+
+    if (!menu || !menuButton) {
+      return;
+    }
 
     menu.classList.remove("open");
-    toggle.setAttribute("aria-expanded", "false");
-    toggle.setAttribute("aria-label", "Abrir menu");
+
+    menuButton.setAttribute(
+      "aria-expanded",
+      "false"
+    );
+
+    menuButton.setAttribute(
+      "aria-label",
+      "Abrir menu"
+    );
+
   };
 
-  if (toggle && menu) {
-    toggle.addEventListener("click", () => {
-      const isOpen = menu.classList.toggle("open");
 
-      toggle.setAttribute("aria-expanded", String(isOpen));
-      toggle.setAttribute(
-        "aria-label",
-        isOpen ? "Fechar menu" : "Abrir menu",
-      );
-    });
+  if (menuButton && menu) {
 
-    menu.querySelectorAll("a").forEach((link) => {
-      link.addEventListener("click", closeMenu);
-    });
-  }
+    menuButton.addEventListener(
+      "click",
+      () => {
 
-  /* =========================================================
-     CABEÇALHO AO ROLAR
-     ========================================================= */
+        const isOpen =
+          menu.classList.toggle(
+            "open"
+          );
 
-  if (header) {
-    const onScroll = () => {
-      header.classList.toggle("scrolled", window.scrollY > 16);
-    };
+        menuButton.setAttribute(
+          "aria-expanded",
+          String(isOpen)
+        );
 
-    window.addEventListener("scroll", onScroll, { passive: true });
-    onScroll();
-  }
+        menuButton.setAttribute(
+          "aria-label",
+          isOpen
+            ? "Fechar menu"
+            : "Abrir menu"
+        );
 
-  /* =========================================================
-     GALERIA / LIGHTBOX
-     ========================================================= */
-
-  const galleryItems = [
-    ...document.querySelectorAll(".gallery-item"),
-  ];
-
-  const lightbox = document.querySelector("#gallery-lightbox");
-  const lightboxImage = lightbox?.querySelector(".lightbox-image");
-  const lightboxClose = lightbox?.querySelector(".lightbox-close");
-  const lightboxPrev = lightbox?.querySelector(".lightbox-prev");
-  const lightboxNext = lightbox?.querySelector(".lightbox-next");
-
-  let activeIndex = 0;
-
-  const showImage = (index) => {
-    if (!galleryItems.length || !lightboxImage) return;
-
-    activeIndex =
-      (index + galleryItems.length) % galleryItems.length;
-
-    const image = galleryItems[activeIndex].querySelector("img");
-
-    if (!image) return;
-
-    lightboxImage.src = image.src;
-    lightboxImage.alt = image.alt || "Foto da galeria Sophia.artnails";
-  };
-
-  galleryItems.forEach((item, index) => {
-    item.addEventListener("click", () => {
-      showImage(index);
-
-      if (lightbox?.showModal) {
-        lightbox.showModal();
       }
-    });
-  });
+    );
 
-  lightboxClose?.addEventListener("click", () => {
-    lightbox.close();
-  });
 
-  lightboxPrev?.addEventListener("click", () => {
-    showImage(activeIndex - 1);
-  });
+    menu
+      .querySelectorAll("a")
+      .forEach((link) => {
 
-  lightboxNext?.addEventListener("click", () => {
-    showImage(activeIndex + 1);
-  });
+        link.addEventListener(
+          "click",
+          () => {
 
-  lightbox?.addEventListener("click", (event) => {
-    const bounds = lightbox.getBoundingClientRect();
+            closeMenu();
 
-    const clickedOutside =
-      event.clientX < bounds.left ||
-      event.clientX > bounds.right ||
-      event.clientY < bounds.top ||
-      event.clientY > bounds.bottom;
+          }
+        );
 
-    if (clickedOutside) {
-      lightbox.close();
+      });
+
+
+    document.addEventListener(
+      "keydown",
+      (event) => {
+
+        if (event.key === "Escape") {
+          closeMenu();
+        }
+
+      }
+    );
+
+
+    window.addEventListener(
+      "resize",
+      () => {
+
+        if (
+          window.innerWidth > 760
+        ) {
+
+          closeMenu();
+
+        }
+
+      }
+    );
+
+  }
+
+
+  /* =======================================================
+     HEADER AO ROLAR
+  ======================================================= */
+
+  const header =
+    document.querySelector(
+      ".site-header"
+    );
+
+
+  const updateHeader = () => {
+
+    if (!header) {
+      return;
     }
-  });
 
-  /* =========================================================
-     TECLADO DA GALERIA
-     ========================================================= */
+    header.classList.toggle(
+      "scrolled",
+      window.scrollY > 20
+    );
 
-  document.addEventListener("keydown", (event) => {
-    if (!lightbox?.open) return;
+  };
 
-    if (event.key === "Escape") {
-      lightbox.close();
-    }
 
-    if (event.key === "ArrowLeft") {
-      showImage(activeIndex - 1);
-    }
+  updateHeader();
 
-    if (event.key === "ArrowRight") {
-      showImage(activeIndex + 1);
-    }
-  });
 
-  /* =========================================================
-     AGENDAMENTO
-     ========================================================= */
-
-  const bookingModal = document.querySelector("#booking-modal");
-  const bookingForm = document.querySelector("#booking-form");
-
-  const bookingService = document.querySelector("#booking-service");
-  const bookingPrice = document.querySelector("#booking-price");
-  const bookingDuration = document.querySelector("#booking-duration");
-  const bookingDescription = document.querySelector(
-    "#booking-description",
+  window.addEventListener(
+    "scroll",
+    updateHeader,
+    { passive: true }
   );
 
-  const bookingName = document.querySelector("#booking-name");
-  const bookingDate = document.querySelector("#booking-date");
-  const bookingTime = document.querySelector("#booking-time");
-  const bookingNotes = document.querySelector("#booking-notes");
 
-  const bookingClose = document.querySelector("#booking-close");
-  const bookingButtons = [
-    ...document.querySelectorAll(".js-open-booking"),
-  ];
+  /* =======================================================
+     ANIMAÇÕES
+  ======================================================= */
 
-  let selectedService = {
-    name: "",
-    price: "",
-    duration: 0,
-    description: "",
-    durability: "",
+  const revealElements =
+    document.querySelectorAll(
+      ".reveal"
+    );
+
+
+  if (
+    "IntersectionObserver"
+    in window
+  ) {
+
+    const observer =
+      new IntersectionObserver(
+        (entries, observer) => {
+
+          entries.forEach(
+            (entry) => {
+
+              if (
+                entry.isIntersecting
+              ) {
+
+                entry.target.classList.add(
+                  "visible"
+                );
+
+                observer.unobserve(
+                  entry.target
+                );
+
+              }
+
+            }
+          );
+
+        },
+        {
+          threshold: 0.12
+        }
+      );
+
+
+    revealElements.forEach(
+      (element) => {
+
+        observer.observe(element);
+
+      }
+    );
+
+  } else {
+
+    revealElements.forEach(
+      (element) => {
+
+        element.classList.add(
+          "visible"
+        );
+
+      }
+    );
+
+  }
+
+
+  /* =======================================================
+     AGENDAMENTO
+  ======================================================= */
+
+  const bookingModal =
+    document.querySelector(
+      "#agendamento"
+    );
+
+  const bookingForm =
+    document.querySelector(
+      "#booking-form"
+    );
+
+  const bookingClose =
+    document.querySelector(
+      ".modal-close"
+    );
+
+  const bookingService =
+    document.querySelector(
+      "#booking-service"
+    );
+
+  const bookingDate =
+    document.querySelector(
+      "#booking-date"
+    );
+
+  const bookingWhatsapp =
+    document.querySelector(
+      "#booking-whatsapp"
+    );
+
+
+  /* =======================================================
+     DATA MÍNIMA
+  ======================================================= */
+
+  if (bookingDate) {
+
+    const today =
+      new Date();
+
+    const year =
+      today.getFullYear();
+
+    const month =
+      String(
+        today.getMonth() + 1
+      ).padStart(2, "0");
+
+    const day =
+      String(
+        today.getDate()
+      ).padStart(2, "0");
+
+    bookingDate.min =
+      `${year}-${month}-${day}`;
+
+  }
+
+
+  /* =======================================================
+     MÁSCARA WHATSAPP
+  ======================================================= */
+
+  if (bookingWhatsapp) {
+
+    bookingWhatsapp.addEventListener(
+      "input",
+      () => {
+
+        let value =
+          bookingWhatsapp.value
+            .replace(/\D/g, "")
+            .slice(0, 11);
+
+
+        if (
+          value.length > 10
+        ) {
+
+          value =
+            value.replace(
+              /^(\d{2})(\d{5})(\d{0,4})/,
+              "($1) $2-$3"
+            );
+
+        } else if (
+          value.length > 6
+        ) {
+
+          value =
+            value.replace(
+              /^(\d{2})(\d{4})(\d{0,4})/,
+              "($1) $2-$3"
+            );
+
+        } else if (
+          value.length > 2
+        ) {
+
+          value =
+            value.replace(
+              /^(\d{2})(\d{0,5})/,
+              "($1) $2"
+            );
+
+        } else {
+
+          value =
+            value.replace(
+              /^(\d{0,2})/,
+              "($1"
+            );
+
+        }
+
+
+        bookingWhatsapp.value =
+          value;
+
+      }
+    );
+
+  }
+
+
+  /* =======================================================
+     ABRIR MODAL
+  ======================================================= */
+
+  const openBooking = (
+    service = ""
+  ) => {
+
+    closeMenu();
+
+
+    if (!bookingModal) {
+      return;
+    }
+
+
+    /*
+       Se o botão veio de um serviço,
+       seleciona automaticamente.
+    */
+
+    if (
+      service &&
+      bookingService
+    ) {
+
+      bookingService.value =
+        service;
+
+    }
+
+
+    /*
+       Abre o modal.
+    */
+
+    if (
+      typeof bookingModal.showModal
+      === "function"
+    ) {
+
+      bookingModal.showModal();
+
+    } else {
+
+      bookingModal.setAttribute(
+        "open",
+        ""
+      );
+
+    }
+
+
+    /*
+       Coloca o cursor no nome.
+    */
+
+    setTimeout(
+      () => {
+
+        document
+          .querySelector(
+            "#booking-name"
+          )
+          ?.focus();
+
+      },
+      100
+    );
+
   };
 
-  /* =========================================================
-     CONFIGURAÇÃO DE HORÁRIOS
-     ========================================================= */
 
-  const businessHours = {
-    0: {
-      start: 14 * 60,
-      end: 23 * 60,
-    },
-    1: {
-      start: 18 * 60,
-      end: 23 * 60,
-    },
-    2: {
-      start: 18 * 60,
-      end: 23 * 60,
-    },
-    3: {
-      start: 18 * 60,
-      end: 23 * 60,
-    },
-    4: {
-      start: 18 * 60,
-      end: 23 * 60,
-    },
-    5: {
-      start: 18 * 60,
-      end: 23 * 60,
-    },
-    6: {
-      start: 19 * 60,
-      end: 23 * 60,
-    },
-  };
+  /* =======================================================
+     BOTÕES DE AGENDAMENTO
+  ======================================================= */
+
+  document
+    .querySelectorAll(
+      "[data-booking-open]"
+    )
+    .forEach((button) => {
+
+      button.addEventListener(
+        "click",
+        (event) => {
+
+          event.preventDefault();
+
+          const service =
+            button.dataset.service
+            || "";
+
+          openBooking(
+            service
+          );
+
+        }
+      );
+
+    });
+
+
+  /* =======================================================
+     FECHAR MODAL
+  ======================================================= */
+
+  if (bookingClose) {
+
+    bookingClose.addEventListener(
+      "click",
+      () => {
+
+        bookingModal.close();
+
+      }
+    );
+
+  }
+
 
   /*
-   * Horários aparecem de 30 em 30 minutos.
-   *
-   * Exemplo:
-   * 120 min -> último início possível às 21h
-   * 90 min  -> último início possível às 21h30
-   * 60 min  -> último início possível às 22h
-   * 30 min  -> último início possível às 22h30
-   */
+     Fecha clicando fora da caixa.
+  */
 
-  const formatTime = (minutes) => {
-    const hours = Math.floor(minutes / 60);
-    const mins = minutes % 60;
+  if (bookingModal) {
 
-    return `${String(hours).padStart(2, "0")}:${String(mins).padStart(
-      2,
-      "0",
-    )}`;
-  };
+    bookingModal.addEventListener(
+      "click",
+      (event) => {
 
-  const getLocalDateString = (date = new Date()) => {
-    const year = date.getFullYear();
-    const month = String(date.getMonth() + 1).padStart(2, "0");
-    const day = String(date.getDate()).padStart(2, "0");
+        if (
+          event.target ===
+          bookingModal
+        ) {
 
-    return `${year}-${month}-${day}`;
-  };
+          bookingModal.close();
 
-  const getSelectedDate = () => {
-    if (!bookingDate?.value) return null;
-
-    const [year, month, day] = bookingDate.value
-      .split("-")
-      .map(Number);
-
-    const date = new Date(year, month - 1, day);
-
-    if (Number.isNaN(date.getTime())) {
-      return null;
-    }
-
-    return date;
-  };
-
-  const getDayHours = (date) => {
-    if (!date) return null;
-
-    return businessHours[date.getDay()] || null;
-  };
-
-  const populateTimeOptions = () => {
-    if (!bookingTime) return;
-
-    bookingTime.innerHTML =
-      '<option value="">Selecione</option>';
-
-    const selectedDate = getSelectedDate();
-    const hours = getDayHours(selectedDate);
-
-    if (!selectedDate || !hours) {
-      return;
-    }
-
-    const lastStart = hours.end - selectedService.duration;
-
-    if (lastStart < hours.start) {
-      bookingTime.innerHTML =
-        '<option value="">Nenhum horário disponível</option>';
-
-      return;
-    }
-
-    const now = new Date();
-    const todayString = getLocalDateString(now);
-    const selectedDateString = bookingDate.value;
-
-    for (
-      let minutes = hours.start;
-      minutes <= lastStart;
-      minutes += 30
-    ) {
-      /*
-       * Se a pessoa estiver tentando agendar para hoje,
-       * não mostramos horários que já passaram.
-       */
-      if (selectedDateString === todayString) {
-        const currentMinutes =
-          now.getHours() * 60 + now.getMinutes();
-
-        if (minutes <= currentMinutes) {
-          continue;
         }
+
+      }
+    );
+
+  }
+
+
+  /* =======================================================
+     ENVIAR FORMULÁRIO
+  ======================================================= */
+
+  if (bookingForm) {
+
+    bookingForm.addEventListener(
+      "submit",
+      (event) => {
+
+        event.preventDefault();
+
+
+        /* ===============================
+           PEGAR DADOS
+        =============================== */
+
+        const nome =
+          document
+            .querySelector(
+              "#booking-name"
+            )
+            ?.value
+            .trim();
+
+
+        const whatsapp =
+          document
+            .querySelector(
+              "#booking-whatsapp"
+            )
+            ?.value
+            .trim();
+
+
+        const servico =
+          bookingService
+            ?.value;
+
+
+        const data =
+          bookingDate
+            ?.value;
+
+
+        const horario =
+          document
+            .querySelector(
+              "#booking-time"
+            )
+            ?.value;
+
+
+        /* ===============================
+           VALIDAR
+        =============================== */
+
+        if (
+          !nome ||
+          !whatsapp ||
+          !servico ||
+          !data ||
+          !horario
+        ) {
+
+          return;
+
+        }
+
+
+        /* ===============================
+           FORMATAR DATA
+        =============================== */
+
+        const [
+          year,
+          month,
+          day
+        ] =
+          data.split("-");
+
+
+        const dataFormatada =
+          `${day}/${month}/${year}`;
+
+
+        /* ===============================
+           MENSAGEM
+        =============================== */
+
+        const mensagem =
+`Olá, Sophia! Gostaria de agendar um horário. 💅
+
+📋 DADOS DO AGENDAMENTO
+
+Nome: ${nome}
+WhatsApp: ${whatsapp}
+
+💅 Serviço: ${servico}
+📅 Data: ${dataFormatada}
+⏰ Horário: ${horario}
+
+Aguardo a confirmação do horário. 💕`;
+
+
+        /* ===============================
+           LINK WHATSAPP
+        =============================== */
+
+        const linkWhatsApp =
+          `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
+            mensagem
+          )}`;
+
+
+        /* ===============================
+           ABRIR WHATSAPP
+        =============================== */
+
+        window.open(
+          linkWhatsApp,
+          "_blank"
+        );
+
+
+        /* ===============================
+           FECHAR MODAL
+        =============================== */
+
+        if (bookingModal) {
+
+          bookingModal.close();
+
+        }
+
+      }
+    );
+
+  }
+
+
+  /* =======================================================
+     LIGHTBOX
+  ======================================================= */
+
+  const galleryItems =
+    [
+      ...document.querySelectorAll(
+        ".gallery-item"
+      )
+    ];
+
+
+  const lightbox =
+    document.querySelector(
+      ".lightbox"
+    );
+
+  const lightboxImage =
+    lightbox?.querySelector(
+      "figure img"
+    );
+
+  const lightboxCaption =
+    lightbox?.querySelector(
+      "figcaption"
+    );
+
+  const lightboxClose =
+    lightbox?.querySelector(
+      ".lightbox-close"
+    );
+
+  const lightboxPrev =
+    lightbox?.querySelector(
+      ".lightbox-prev"
+    );
+
+  const lightboxNext =
+    lightbox?.querySelector(
+      ".lightbox-next"
+    );
+
+
+  let currentIndex = 0;
+
+
+  const showImage = (
+    index
+  ) => {
+
+    if (
+      !galleryItems.length ||
+      !lightboxImage
+    ) {
+
+      return;
+
+    }
+
+
+    currentIndex =
+      (
+        index +
+        galleryItems.length
+      ) %
+      galleryItems.length;
+
+
+    const item =
+      galleryItems[
+        currentIndex
+      ];
+
+
+    const image =
+      item.querySelector(
+        "img"
+      );
+
+
+    if (!image) {
+      return;
+    }
+
+
+    lightboxImage.src =
+      image.src;
+
+    lightboxImage.alt =
+      image.alt;
+
+
+    if (lightboxCaption) {
+
+      lightboxCaption.textContent =
+        `Trabalho ${
+          currentIndex + 1
+        }`;
+
+    }
+
+  };
+
+
+  galleryItems.forEach(
+    (item, index) => {
+
+      item.addEventListener(
+        "click",
+        () => {
+
+          showImage(index);
+
+          if (
+            typeof lightbox
+              ?.showModal ===
+            "function"
+          ) {
+
+            lightbox.showModal();
+
+          }
+
+        }
+      );
+
+    }
+  );
+
+
+  lightboxClose?.addEventListener(
+    "click",
+    () => {
+
+      lightbox.close();
+
+    }
+  );
+
+
+  lightboxPrev?.addEventListener(
+    "click",
+    () => {
+
+      showImage(
+        currentIndex - 1
+      );
+
+    }
+  );
+
+
+  lightboxNext?.addEventListener(
+    "click",
+    () => {
+
+      showImage(
+        currentIndex + 1
+      );
+
+    }
+  );
+
+
+  /*
+     ESC fecha o lightbox
+     usando o comportamento padrão
+     do <dialog>.
+  */
+
+
+  /* =======================================================
+     TECLAS ← →
+  ======================================================= */
+
+  document.addEventListener(
+    "keydown",
+    (event) => {
+
+      if (
+        !lightbox ||
+        !lightbox.open
+      ) {
+
+        return;
+
       }
 
-      const option = document.createElement("option");
 
-      option.value = formatTime(minutes);
-      option.textContent = formatTime(minutes);
+      if (
+        event.key === "ArrowLeft"
+      ) {
 
-      bookingTime.appendChild(option);
+        showImage(
+          currentIndex - 1
+        );
+
+      }
+
+
+      if (
+        event.key === "ArrowRight"
+      ) {
+
+        showImage(
+          currentIndex + 1
+        );
+
+      }
+
     }
+  );
 
-    if (bookingTime.options.length === 1) {
-      bookingTime.innerHTML =
-        '<option value="">Nenhum horário disponível para hoje</option>';
-    }
-  };
 
-  const setMinimumDate = () => {
-    if (!bookingDate) return;
-
-    bookingDate.min = getLocalDateString();
-  };
-
-  const formatDateForMessage = (dateString) => {
-    if (!dateString) return "";
-
-    const [year, month, day] = dateString.split("-");
-
-    return `${day}/${month}/${year}`;
-  };
-
-  const formatDuration = (minutes) => {
-    if (minutes === 30) return "30 minutos";
-
-    if (minutes === 60) return "1 hora";
-
-    if (minutes === 90) return "1 hora e 30 minutos";
-
-    if (minutes === 120) return "2 horas";
-
-    const hours = Math.floor(minutes / 60);
-    const remainingMinutes = minutes % 60;
-
-    if (remainingMinutes === 0) {
-      return `${hours} horas`;
-    }
-
-    return `${hours}h ${remainingMinutes}min`;
-  };
-
-  /* =========================================================
-     ABRIR AGENDAMENTO
-     ========================================================= */
-
-  const openBooking = (button) => {
-    selectedService = {
-      name: button.dataset.service || "",
-      price: button.dataset.price || "",
-      duration: Number(button.dataset.duration || 0),
-      description: button.dataset.description || "",
-      durability: button.dataset.durability || "",
-    };
-
-    if (bookingService) {
-      bookingService.textContent = selectedService.name;
-    }
-
-    if (bookingPrice) {
-      bookingPrice.textContent = selectedService.price;
-    }
-
-    if (bookingDuration) {
-      bookingDuration.textContent = formatDuration(
-        selectedService.duration,
-      );
-    }
-
-    if (bookingDescription) {
-      bookingDescription.textContent =
-        selectedService.description ||
-        "Preencha os dados abaixo e continue pelo WhatsApp.";
-    }
-
-    if (bookingDate) {
-      bookingDate.value = "";
-    }
-
-    if (bookingTime) {
-      bookingTime.innerHTML =
-        '<option value="">Selecione a data primeiro</option>';
-    }
-
-    if (bookingNotes) {
-      bookingNotes.value = "";
-    }
-
-    if (bookingModal?.showModal) {
-      bookingModal.showModal();
-    }
-
-    setTimeout(() => {
-      bookingName?.focus();
-    }, 100);
-  };
-
-  bookingButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-      openBooking(button);
-    });
-  });
-
-  /* =========================================================
-     DATA ALTERADA
-     ========================================================= */
-
-  bookingDate?.addEventListener("change", () => {
-    populateTimeOptions();
-  });
-
-  /* =========================================================
-     FECHAR AGENDAMENTO
-     ========================================================= */
-
-  bookingClose?.addEventListener("click", () => {
-    bookingModal.close();
-  });
-
-  bookingModal?.addEventListener("click", (event) => {
-    const bounds = bookingModal.getBoundingClientRect();
-
-    const clickedOutside =
-      event.clientX < bounds.left ||
-      event.clientX > bounds.right ||
-      event.clientY < bounds.top ||
-      event.clientY > bounds.bottom;
-
-    if (clickedOutside) {
-      bookingModal.close();
-    }
-  });
-
-  /* =========================================================
-     ENVIO DO AGENDAMENTO PARA WHATSAPP
-     ========================================================= */
-
-  bookingForm?.addEventListener("submit", (event) => {
-    event.preventDefault();
-
-    if (!bookingName?.value.trim()) {
-      bookingName?.focus();
-      return;
-    }
-
-    if (!bookingDate?.value) {
-      bookingDate?.focus();
-      return;
-    }
-
-    if (!bookingTime?.value) {
-      bookingTime?.focus();
-      return;
-    }
-
-    const name = bookingName.value.trim();
-    const date = formatDateForMessage(bookingDate.value);
-    const time = bookingTime.value;
-    const notes = bookingNotes?.value.trim() || "";
-
-    const message = [
-      "Olá, Sophia! Gostaria de solicitar um agendamento.",
-      "",
-      `Nome: ${name}`,
-      `Procedimento: ${selectedService.name}`,
-      `Valor: ${selectedService.price}`,
-      `Data desejada: ${date}`,
-      `Horário desejado: ${time}`,
-      notes ? `Observação: ${notes}` : "",
-      "",
-      "Se esse horário estiver disponível, pode confirmar para mim, por favor?",
-    ]
-      .filter(Boolean)
-      .join("\n");
-
-    window.open(
-      whatsappUrl(message),
-      "_blank",
-      "noopener,noreferrer",
-    );
-
-    bookingModal.close();
-  });
-
-  /* =========================================================
-     DATA MÍNIMA
-     ========================================================= */
-
-  setMinimumDate();
-
-  /* =========================================================
-     ANIMAÇÕES DE ENTRADA
-     ========================================================= */
-
-  if ("IntersectionObserver" in window) {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      {
-        threshold: 0.12,
-      },
-    );
-
-    document
-      .querySelectorAll(".reveal")
-      .forEach((element) => observer.observe(element));
-  } else {
-    document
-      .querySelectorAll(".reveal")
-      .forEach((element) => {
-        element.classList.add("visible");
-      });
-  }
-
-  /* =========================================================
+  /* =======================================================
      ANO DO RODAPÉ
-     ========================================================= */
+  ======================================================= */
 
-  const currentYear = document.querySelector("#current-year");
+  const year =
+    document.querySelector(
+      "#year"
+    );
 
-  if (currentYear) {
-    currentYear.textContent = new Date().getFullYear();
+
+  if (year) {
+
+    year.textContent =
+      new Date()
+        .getFullYear();
+
   }
-})();
+
+});
