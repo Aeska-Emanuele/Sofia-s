@@ -1,8 +1,3 @@
-/* =========================================================
-   SOPHIA.ARTNAILS
-   CSS COMPLETO
-========================================================= */
-
 :root {
   --purple: #a60dec;
   --purple-dark: #6d08a8;
@@ -21,10 +16,8 @@
 
   --radius: 1.5rem;
 
-  --shadow:
-    0 18px 50px rgba(166, 13, 236, 0.18);
+  --shadow: 0 18px 50px rgba(166, 13, 236, 0.18);
 }
-
 
 /* =========================================================
    RESET
@@ -100,7 +93,6 @@ h2 em {
   font-style: normal;
 }
 
-
 /* =========================================================
    ACESSIBILIDADE
 ========================================================= */
@@ -124,7 +116,6 @@ h2 em {
   outline-offset: 4px;
 }
 
-
 /* =========================================================
    CONTAINER / SEÇÕES
 ========================================================= */
@@ -137,7 +128,6 @@ h2 em {
 .section {
   padding: 7rem 0;
 }
-
 
 /* =========================================================
    TEXTOS
@@ -152,9 +142,14 @@ h2 em {
   text-transform: uppercase;
 }
 
+/* Estrelinha do texto com brilho Y2K */
 .sparkle {
-  margin-right: 0.3rem;
-  font-size: 1rem;
+  display: inline-block;
+  color: #e8c3ff;
+  text-shadow:
+    0 0 5px #c86df5,
+    0 0 12px #a60dec;
+  animation: y2k-sparkle 1.8s ease-in-out infinite;
 }
 
 .section-heading {
@@ -162,6 +157,37 @@ h2 em {
   margin-bottom: 3rem;
 }
 
+/* =========================================================
+   ANIMAÇÕES Y2K
+========================================================= */
+
+@keyframes y2k-twinkle {
+  0%,
+  100% {
+    opacity: 0.55;
+    transform: scale(0.85) rotate(0deg);
+    filter: brightness(0.9);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.2) rotate(12deg);
+    filter: brightness(1.5);
+  }
+}
+
+@keyframes y2k-sparkle {
+  0%,
+  100% {
+    opacity: 0.65;
+    transform: scale(0.9);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.25);
+  }
+}
 
 /* =========================================================
    BOTÕES
@@ -172,11 +198,8 @@ h2 em {
   align-items: center;
   justify-content: center;
   gap: 0.65rem;
-
   padding: 0.9rem 1.35rem;
-
   border-radius: 999px;
-
   font-size: 0.88rem;
   font-weight: 700;
 
@@ -193,15 +216,12 @@ h2 em {
 .button-primary {
   background: var(--purple);
   color: var(--white);
-
-  box-shadow:
-    0 8px 20px rgba(166, 13, 236, 0.25);
+  box-shadow: 0 8px 20px rgba(166, 13, 236, 0.25);
 }
 
 .button-primary:hover {
   background: var(--purple-dark);
-  box-shadow:
-    0 12px 30px rgba(166, 13, 236, 0.35);
+  box-shadow: 0 12px 30px rgba(166, 13, 236, 0.35);
 }
 
 .button-ghost {
@@ -214,7 +234,6 @@ h2 em {
   background: rgba(166, 13, 236, 0.12);
 }
 
-
 /* =========================================================
    LINKS
 ========================================================= */
@@ -223,11 +242,8 @@ h2 em {
   display: inline-flex;
   align-items: center;
   gap: 0.6rem;
-
   padding-bottom: 0.2rem;
-
   border-bottom: 1px solid currentColor;
-
   font-weight: 700;
 
   transition:
@@ -240,7 +256,6 @@ h2 em {
   gap: 0.8rem;
 }
 
-
 /* =========================================================
    HEADER
 ========================================================= */
@@ -248,7 +263,6 @@ h2 em {
 .site-header {
   position: fixed;
   inset: 0 0 auto;
-
   z-index: 1000;
 
   transition:
@@ -259,19 +273,15 @@ h2 em {
 .site-header.scrolled {
   background: rgba(0, 0, 0, 0.82);
   backdrop-filter: blur(15px);
-
-  box-shadow:
-    0 3px 18px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 3px 18px rgba(0, 0, 0, 0.3);
 }
 
 .navbar {
   min-height: 5.5rem;
-
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-
 
 /* =========================================================
    LOGO
@@ -280,18 +290,15 @@ h2 em {
 .brand {
   position: relative;
   z-index: 1002;
-
   font-family: var(--serif);
   font-size: 1.35rem;
   font-weight: 700;
-
   letter-spacing: -0.06em;
 }
 
 .brand span {
   color: var(--purple);
 }
-
 
 /* =========================================================
    MENU DESKTOP
@@ -301,7 +308,6 @@ h2 em {
   display: flex;
   align-items: center;
   gap: 1.35rem;
-
   font-size: 0.78rem;
   font-weight: 700;
 }
@@ -318,13 +324,6 @@ h2 em {
   color: var(--purple);
 }
 
-
-/*
-   IMPORTANTE:
-
-   Agendar no desktop NÃO é botão.
-*/
-
 .nav-cta {
   background: transparent;
   color: var(--white);
@@ -335,42 +334,31 @@ h2 em {
   color: var(--purple);
 }
 
-
 /* =========================================================
    BOTÃO MOBILE
 ========================================================= */
 
 .mobile-menu-button {
   display: none;
-
   width: 2.6rem;
   height: 2.6rem;
-
   align-items: center;
   justify-content: center;
   flex-direction: column;
-
   gap: 5px;
-
   border: 0;
   background: transparent;
-
   padding: 0;
-
   cursor: pointer;
-
   position: relative;
   z-index: 1002;
 }
 
 .mobile-menu-button span {
   display: block;
-
   width: 1.2rem;
   height: 2px;
-
   background: var(--white);
-
   border-radius: 10px;
 
   transition:
@@ -383,16 +371,13 @@ h2 em {
   background: var(--purple);
 }
 
-
 /* =========================================================
    HERO
 ========================================================= */
 
 .hero {
   min-height: 48rem;
-
   padding-top: 10rem;
-
   position: relative;
   overflow: hidden;
 
@@ -411,43 +396,31 @@ h2 em {
 
 .hero-grid {
   display: grid;
-
-  grid-template-columns:
-    1.1fr
-    0.9fr;
-
+  grid-template-columns: 1.1fr 0.9fr;
   align-items: center;
-
   gap: 3rem;
 }
 
 .hero-description {
   max-width: 30rem;
-
   color: var(--gray);
-
   font-size: 1.05rem;
 }
 
 .hero-actions {
   display: flex;
   flex-wrap: wrap;
-
   gap: 0.75rem;
-
   margin-top: 2rem;
 }
 
 .hero-note {
   margin-top: 2rem;
-
   color: var(--gray);
-
   font-size: 0.75rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
-
 
 /* =========================================================
    HERO ART
@@ -456,200 +429,274 @@ h2 em {
 .hero-art {
   width: 100%;
   height: 25rem;
-
   position: relative;
+  transform: translateX(1.5rem);
 }
+
+/* Cards sobrepostos */
 
 .art-card {
   position: absolute;
-
   border-radius: 2.2rem;
 }
 
 .art-card-back {
-  width: 70%;
+  width: 68%;
   height: 75%;
-
-  right: 5%;
+  right: 0;
   top: 11%;
+  transform: rotate(9deg);
 
-  transform: rotate(10deg);
+  background: linear-gradient(
+    130deg,
+    #1a0024,
+    #4b0870
+  );
 
-  background:
-    linear-gradient(
-      130deg,
-      #1a0024,
-      #4b0870
-    );
-
-  border: 1px solid rgba(166, 13, 236, 0.4);
+  border: 1px solid rgba(166, 13, 236, 0.45);
 }
 
 .art-card-main {
-  width: 70%;
+  width: 68%;
   height: 80%;
-
-  right: 13%;
+  right: 8%;
   top: 4%;
-
   overflow: hidden;
 
-  padding: 2rem;
-
   background:
+    radial-gradient(
+      circle at 50% 50%,
+      rgba(166, 13, 236, 0.12),
+      transparent 65%
+    ),
     linear-gradient(
       135deg,
       #111111,
       #260035 75%
     );
 
-  border: 1px solid rgba(166, 13, 236, 0.5);
-
-  box-shadow: var(--shadow);
-}
-
-.art-card-main p {
-  position: absolute;
-
-  left: 1.5rem;
-  bottom: 1rem;
-
-  font-family: var(--serif);
-  font-size: 1.5rem;
-  line-height: 0.9;
-}
-
-.art-card-main strong {
-  color: var(--purple);
-
-  font-size: 2.8rem;
-  font-weight: 400;
-}
-
-.nail-shape {
-  position: absolute;
-
-  width: 4rem;
-  height: 8rem;
-
-  border-radius:
-    3rem
-    3rem
-    1rem
-    1rem;
-
-  border: 2px solid rgba(255, 255, 255, 0.5);
-
-  background:
-    linear-gradient(
-      130deg,
-      #6d08a8,
-      #a60dec 55%,
-      #ffffff
-    );
-
-  transform: rotate(24deg);
+  border: 1px solid rgba(166, 13, 236, 0.55);
 
   box-shadow:
-    inset
-    0.4rem
-    0.3rem
-    0.8rem
-    rgba(166, 13, 236, 0.3);
+    0 18px 50px rgba(166, 13, 236, 0.18),
+    inset 0 0 35px rgba(166, 13, 236, 0.08);
 }
 
-.nail-one {
-  right: 24%;
-  top: 13%;
-}
-
-.nail-two {
-  right: 9%;
-  top: 27%;
-
-  transform:
-    rotate(35deg)
-    scale(0.86);
-}
-
-.nail-three {
-  right: 40%;
-  top: 23%;
-
-  transform:
-    rotate(7deg)
-    scale(0.7);
-}
-
-.art-shine {
+.art-card-main .art-star {
   position: absolute;
-
-  width: 11rem;
-  height: 4rem;
-
-  background: rgba(255, 255, 255, 0.5);
-
-  filter: blur(10px);
-
-  transform: rotate(-40deg);
+  z-index: 2;
 }
 
-.shine-a {
-  right: -2rem;
-  top: 1rem;
-}
+/* Estrelas dentro do card */
 
-.shine-b {
-  left: -5rem;
-  bottom: 3rem;
-}
-
-.floating-star {
+.art-star {
   position: absolute;
+  display: block;
+  color: #f5ddff;
+  text-shadow:
+    0 0 5px #ffffff,
+    0 0 12px #c86df5,
+    0 0 24px #a60dec;
+  animation: y2k-twinkle 3s ease-in-out infinite;
+  pointer-events: none;
+}
 
-  color: var(--purple);
+.art-star-1 {
+  top: 15%;
+  left: 18%;
+  font-size: 1.5rem;
+  animation-delay: 0s;
+}
 
+.art-star-2 {
+  top: 25%;
+  right: 20%;
   font-size: 2rem;
+  animation-delay: 0.8s;
 }
 
-.star-a {
-  top: -0.5rem;
-  right: 0;
+.art-star-3 {
+  top: 48%;
+  left: 45%;
+  font-size: 1rem;
+  animation-delay: 1.4s;
 }
 
-.star-b {
-  bottom: 0;
-  left: 4%;
-
-  color: #8a6675;
+.art-star-4 {
+  bottom: 18%;
+  left: 22%;
+  font-size: 2.2rem;
+  animation-delay: 0.4s;
 }
 
-.hero-orb {
+.art-star-5 {
+  bottom: 25%;
+  right: 16%;
+  font-size: 1.2rem;
+  animation-delay: 1.8s;
+}
+
+.art-star-6 {
+  top: 10%;
+  right: 45%;
+  font-size: 0.8rem;
+  animation-delay: 1s;
+}
+
+.art-star-7 {
+  top: 65%;
+  right: 40%;
+  font-size: 1.7rem;
+  animation-delay: 2s;
+}
+
+.art-star-8 {
+  bottom: 10%;
+  right: 48%;
+  font-size: 0.9rem;
+  animation-delay: 0.6s;
+}
+.art-star-9 {
+  top: 35%;
+  left: 10%;
+  font-size: 1rem;
+  animation-delay: 0.7s;
+}
+
+.art-star-10 {
+  top: 40%;
+  right: 8%;
+  font-size: 1.5rem;
+  animation-delay: 1.3s;
+}
+
+.art-star-11 {
+  top: 75%;
+  left: 10%;
+  font-size: 1.8rem;
+  animation-delay: 1.8s;
+}
+
+.art-star-12 {
+  top: 12%;
+  left: 65%;
+  font-size: 1.1rem;
+  animation-delay: 0.5s;
+}
+
+.art-star-13 {
+  top: 55%;
+  left: 28%;
+  font-size: 0.8rem;
+  animation-delay: 2s;
+}
+
+.art-star-14 {
+  bottom: 8%;
+  right: 30%;
+  font-size: 1.4rem;
+  animation-delay: 1.1s;
+}
+
+.art-star-15 {
+  top: 85%;
+  left: 55%;
+  font-size: 1rem;
+  animation-delay: 0.3s;
+}
+
+.art-star-16 {
+  top: 30%;
+  left: 52%;
+  font-size: 0.7rem;
+  animation-delay: 1.6s;
+}
+
+/* Formas decorativas do fundo */
+
+.hero-symbols {
   position: absolute;
-
-  border-radius: 50%;
-
-  opacity: 0.5;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
 }
 
-.orb-one {
-  width: 13rem;
-  height: 13rem;
+.symbol {
+  position: absolute;
+  display: block;
 
-  left: 7%;
-  bottom: -7rem;
+  color: #e8c3ff;
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 400;
+  white-space: nowrap;
 
-  background: var(--purple);
+  text-shadow:
+    0 0 5px #ffffff,
+    0 0 12px #c86df5,
+    0 0 25px #a60dec;
+
+  opacity: 0.75;
+
+  animation:
+    symbol-float 6s ease-in-out infinite,
+    symbol-glow 2.8s ease-in-out infinite alternate;
 }
 
-.orb-two {
-  width: 5rem;
-  height: 5rem;
+/* Símbolo da esquerda */
 
-  top: 8rem;
-  left: 47%;
+.symbol-one {
+  left: 4%;
+  bottom: 12%;
+  font-size: 1.8rem;
+  transform: rotate(-8deg);
+  animation-delay: 0s;
+}
 
-  border: 1px solid #8b4da5;
+/* Símbolo superior */
+
+.symbol-two {
+  top: 16%;
+  left: 48%;
+  font-size: 1.5rem;
+  transform: rotate(6deg);
+  animation-delay: 1.2s;
+}
+
+/* Símbolo da direita */
+
+.symbol-three {
+  right: 5%;
+  bottom: 22%;
+  font-size: 1.7rem;
+  transform: rotate(10deg);
+  animation-delay: 2s;
+}
+
+
+/* Movimento suave */
+
+@keyframes symbol-float {
+  0%,
+  100% {
+    translate: 0 0;
+  }
+
+  50% {
+    translate: 0 -12px;
+  }
+}
+
+@keyframes symbol-glow {
+  0% {
+    opacity: 0.55;
+    filter: brightness(0.9);
+  }
+
+  100% {
+    opacity: 1;
+    filter: brightness(1.35);
+  }
 }
 
 
@@ -663,88 +710,71 @@ h2 em {
 
 .services-grid {
   display: grid;
-
-  grid-template-columns:
-    repeat(3, 1fr);
-
+  grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
 }
 
 .service-card {
   min-height: 15rem;
-
   display: flex;
   flex-direction: column;
-
   padding: 1.45rem;
 
-  border:
-    1px solid
-    var(--border);
-
+  border: 1px solid var(--border);
   border-radius: var(--radius);
 
-  background:
-    linear-gradient(
-      145deg,
-      #111111,
-      #1b001f
-    );
+  background: linear-gradient(
+    145deg,
+    #111111,
+    #1b001f
+  );
 
   transition:
     transform 0.25s ease,
-    box-shadow 0.25s ease;
+    box-shadow 0.25s ease,
+    border-color 0.3s ease;
 }
 
 .service-card:hover {
   transform: translateY(-5px);
+  border-color: rgba(200, 109, 245, 0.8);
 
-  box-shadow: var(--shadow);
+  box-shadow:
+    0 12px 35px rgba(166, 13, 236, 0.22),
+    0 0 18px rgba(166, 13, 236, 0.12);
 }
 
 .service-number {
   color: var(--purple-dark);
-
   font-family: var(--serif);
   font-size: 2rem;
 }
 
 .service-card h3 {
-  margin:
-    0.7rem
-    0;
-
+  margin: 0.7rem 0;
   font-family: var(--serif);
-
   font-size: 1.55rem;
   font-weight: 400;
-
   line-height: 1.05;
 }
 
 .service-duration {
   margin-bottom: 0.7rem;
-
   color: var(--gray);
-
   font-size: 0.77rem;
 }
 
 .service-price {
   margin-bottom: auto;
-
   font-size: 1.2rem;
   font-weight: 700;
 }
 
 .service-card .text-link {
   align-self: flex-start;
-
   margin-top: 1rem;
-
   font-size: 0.8rem;
 }
-
 
 /* =========================================================
    GALERIA
@@ -756,35 +786,24 @@ h2 em {
 
 .gallery-grid {
   display: grid;
-
-  grid-template-columns:
-    repeat(4, 1fr);
-
+  grid-template-columns: repeat(4, 1fr);
   grid-auto-rows: 11rem;
-
   gap: 1rem;
 }
 
 .gallery-item {
   position: relative;
-
   padding: 0;
-
   border: 0;
-
   border-radius: 1.25rem;
-
   overflow: hidden;
-
   cursor: zoom-in;
-
   background: #1a001f;
 }
 
 .gallery-item img {
   width: 100%;
   height: 100%;
-
   object-fit: cover;
 
   transition:
@@ -794,82 +813,59 @@ h2 em {
 
 .gallery-item:hover img {
   transform: scale(1.06);
-
-  filter:
-    saturate(1.1);
+  filter: saturate(1.1);
 }
 
 .gallery-item span {
   position: absolute;
-
   left: 0.8rem;
   bottom: 0.65rem;
-
   color: var(--white);
-
   font-size: 0.8rem;
-
-  text-shadow:
-    0 1px 4px #000;
+  text-shadow: 0 1px 4px #000;
 }
 
 .gallery-tall {
   grid-row: span 2;
 }
 
-
 /* =========================================================
    SOBRE
 ========================================================= */
 
 .about {
-  background:
-    linear-gradient(
-      120deg,
-      #000000,
-      #16001f
-    );
+  background: linear-gradient(
+    120deg,
+    #000000,
+    #16001f
+  );
 }
 
 .about-grid {
   display: grid;
-
-  grid-template-columns:
-    0.75fr
-    1.25fr;
-
+  grid-template-columns: 0.75fr 1.25fr;
   align-items: center;
-
   gap: 8rem;
 }
 
 .about-mark {
   aspect-ratio: 1;
-
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
   max-width: 25rem;
-
   border-radius: 50%;
-
   color: var(--purple);
 
-  background:
-    radial-gradient(
-      circle at 35% 25%,
-      #2b0038,
-      #090009
-    );
+  background: radial-gradient(
+    circle at 35% 25%,
+    #2b0038,
+    #090009
+  );
 
   box-shadow:
-    inset
-    0 0
-    0
-    0.7rem
-    rgba(166, 13, 236, 0.15),
+    inset 0 0 0 0.7rem rgba(166, 13, 236, 0.15),
     var(--shadow);
 
   transform: rotate(-8deg);
@@ -877,13 +873,9 @@ h2 em {
 
 .about-mark p {
   margin: 1rem 0;
-
   font-family: var(--serif);
-
   font-size: 2rem;
-
   line-height: 0.86;
-
   text-align: center;
 }
 
@@ -894,14 +886,10 @@ h2 em {
 
 .about-text {
   max-width: 34rem;
-
   color: var(--gray);
-
   font-size: 1.05rem;
-
   margin-bottom: 2rem;
 }
-
 
 /* =========================================================
    BENEFÍCIOS
@@ -913,46 +901,32 @@ h2 em {
 
 .benefits-grid {
   display: grid;
-
-  grid-template-columns:
-    repeat(4, 1fr);
-
+  grid-template-columns: repeat(4, 1fr);
   gap: 1rem;
 }
 
 .benefit {
   padding: 1.4rem 1.1rem;
-
-  border-top:
-    1px solid
-    var(--purple);
+  border-top: 1px solid var(--purple);
 }
 
 .benefit > span {
   color: var(--purple);
-
   font-size: 1.5rem;
 }
 
 .benefit h3 {
-  margin:
-    0.8rem
-    0;
-
+  margin: 0.8rem 0;
   font-family: var(--serif);
-
   font-size: 1.35rem;
   font-weight: 400;
-
   line-height: 1.1;
 }
 
 .benefit p {
   color: var(--gray);
-
   font-size: 0.85rem;
 }
-
 
 /* =========================================================
    HORÁRIOS
@@ -964,52 +938,32 @@ h2 em {
 
 .hours-wrap {
   display: grid;
-
-  grid-template-columns:
-    1fr
-    1fr;
-
+  grid-template-columns: 1fr 1fr;
   align-items: center;
-
   gap: 5rem;
 }
 
 .hours-lead {
   max-width: 24rem;
-
   color: var(--gray);
-
   margin-bottom: 2rem;
 }
 
 .hours-card {
   padding: 2rem;
-
-  border:
-    1px solid
-    rgba(166, 13, 236, 0.35);
-
+  border: 1px solid rgba(166, 13, 236, 0.35);
   border-radius: var(--radius);
-
   background: var(--surface);
-
   box-shadow: var(--shadow);
 }
 
 .hours-highlight {
   padding-bottom: 1rem;
-
-  border-bottom:
-    1px solid
-    var(--border);
-
+  border-bottom: 1px solid var(--border);
   color: var(--purple);
-
   font-size: 0.7rem;
   font-weight: 700;
-
   letter-spacing: 0.1em;
-
   text-transform: uppercase;
 }
 
@@ -1019,37 +973,27 @@ h2 em {
 
 .hours-card dl > div {
   padding: 1rem 0;
-
-  border-bottom:
-    1px solid
-    var(--border);
+  border-bottom: 1px solid var(--border);
 }
 
 .hours-card dl > div:last-child {
   border: 0;
-
   padding-bottom: 0;
 }
 
 .hours-card dt {
   color: var(--gray);
-
   font-size: 0.67rem;
   font-weight: 700;
-
   letter-spacing: 0.08em;
-
   text-transform: uppercase;
 }
 
 .hours-card dd {
   margin: 0.15rem 0 0;
-
   font-family: var(--serif);
-
   font-size: 1.7rem;
 }
-
 
 /* =========================================================
    CONTATO
@@ -1057,21 +1001,14 @@ h2 em {
 
 .contact {
   padding-top: 8rem;
-
   background: var(--black);
 }
 
 .contact-card {
   position: relative;
-
-  padding:
-    5rem
-    1.5rem;
-
+  padding: 5rem 1.5rem;
   overflow: hidden;
-
   border-radius: 2rem;
-
   text-align: center;
 
   background:
@@ -1093,26 +1030,17 @@ h2 em {
 
 .contact-card > p:not(.eyebrow) {
   max-width: 31rem;
-
-  margin:
-    0
-    auto;
-
+  margin: 0 auto;
   color: #dddddd;
 }
 
 .contact-actions {
   display: flex;
-
   justify-content: center;
-
   flex-wrap: wrap;
-
   gap: 0.75rem;
-
   margin-top: 2rem;
 }
-
 
 /* =========================================================
    FOOTER
@@ -1120,36 +1048,27 @@ h2 em {
 
 .footer {
   padding: 2rem 0 1.2rem;
-
   background: var(--black);
 }
 
 .footer-row {
   display: flex;
-
   align-items: center;
   justify-content: space-between;
-
   gap: 1rem;
-
   padding-bottom: 1.5rem;
-
-  border-bottom:
-    1px solid
-    var(--border);
+  border-bottom: 1px solid var(--border);
 }
 
 .footer p,
 .footer a,
 .copyright {
   color: var(--gray);
-
   font-size: 0.75rem;
 }
 
 .footer-links {
   display: flex;
-
   gap: 1rem;
 }
 
@@ -1159,10 +1078,8 @@ h2 em {
 
 .copyright {
   margin: 1.2rem 0 0;
-
   text-align: center;
 }
-
 
 /* =========================================================
    MODAL DE AGENDAMENTO
@@ -1171,71 +1088,43 @@ h2 em {
 .booking-modal {
   width: min(92vw, 560px);
   max-width: 560px;
-
   max-height: 90vh;
-
   padding: 0;
-
-  border:
-    1px solid
-    var(--border);
-
+  border: 1px solid var(--border);
   border-radius: 1.6rem;
-
   background: #090909;
-
   color: var(--white);
 
-  box-shadow:
-    0 30px 90px
-    rgba(0, 0, 0, 0.6);
-
+  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.6);
   overflow: hidden;
 }
 
 .booking-modal::backdrop {
-  background:
-    rgba(0, 0, 0, 0.75);
-
+  background: rgba(0, 0, 0, 0.75);
   backdrop-filter: blur(8px);
 }
 
 .booking-modal-content {
   position: relative;
-
   max-height: 90vh;
-
   overflow-y: auto;
-
   padding: 2rem;
 }
 
 .modal-close {
   position: absolute;
-
   top: 1rem;
   right: 1rem;
-
   width: 2.3rem;
   height: 2.3rem;
-
   display: grid;
   place-items: center;
-
-  border:
-    1px solid
-    var(--border);
-
+  border: 1px solid var(--border);
   border-radius: 50%;
-
   background: #161616;
-
   color: var(--white);
-
   font-size: 1.5rem;
-
   line-height: 1;
-
   cursor: pointer;
 
   transition:
@@ -1245,33 +1134,23 @@ h2 em {
 
 .modal-close:hover {
   background: var(--purple);
-
   color: var(--white);
 }
 
 .booking-header {
   padding-right: 2.5rem;
-
   margin-bottom: 1.5rem;
 }
 
 .booking-header h2 {
   margin-bottom: 0.7rem;
-
-  font-size:
-    clamp(
-      2rem,
-      7vw,
-      3rem
-    );
+  font-size: clamp(2rem, 7vw, 3rem);
 }
 
 .booking-header p:last-child {
   margin-bottom: 0;
-
   color: var(--gray);
 }
-
 
 /* =========================================================
    FORMULÁRIO
@@ -1279,44 +1158,29 @@ h2 em {
 
 #booking-form {
   display: grid;
-
   gap: 1rem;
 }
 
 .form-field {
   display: grid;
-
   gap: 0.45rem;
 }
 
 .form-field label {
   font-size: 0.78rem;
-
   font-weight: 700;
 }
 
 .form-field input,
 .form-field select {
   width: 100%;
-
   min-height: 3rem;
-
-  padding:
-    0.85rem
-    0.95rem;
-
-  border:
-    1px solid
-    var(--border);
-
+  padding: 0.85rem 0.95rem;
+  border: 1px solid var(--border);
   border-radius: 0.9rem;
-
   background: #111111;
-
   color: var(--white);
-
   font: inherit;
-
   outline: none;
 
   transition:
@@ -1335,32 +1199,21 @@ h2 em {
 .form-field input:focus,
 .form-field select:focus {
   border-color: var(--purple);
-
-  box-shadow:
-    0 0 0 3px
-    rgba(166, 13, 236, 0.12);
+  box-shadow: 0 0 0 3px rgba(166, 13, 236, 0.12);
 }
 
 .form-row {
   display: grid;
-
-  grid-template-columns:
-    1fr
-    1fr;
-
+  grid-template-columns: 1fr 1fr;
   gap: 1rem;
 }
 
 .booking-submit {
   width: 100%;
-
   margin-top: 0.25rem;
-
   border: 0;
-
   cursor: pointer;
 }
-
 
 /* =========================================================
    LIGHTBOX
@@ -1368,86 +1221,61 @@ h2 em {
 
 .lightbox {
   width: min(90vw, 900px);
-
   max-width: 900px;
-
   height: min(90vh, 700px);
-
   padding: 3rem;
-
   border: 0;
-
   border-radius: 1rem;
-
-  background:
-    rgba(10, 10, 10, 0.97);
-
+  background: rgba(10, 10, 10, 0.97);
   color: var(--white);
 }
 
 .lightbox::backdrop {
-  background:
-    rgba(0, 0, 0, 0.85);
-
+  background: rgba(0, 0, 0, 0.85);
   backdrop-filter: blur(6px);
 }
 
 .lightbox figure {
   width: 100%;
   height: 100%;
-
   margin: 0;
-
   display: flex;
-
   align-items: center;
   justify-content: center;
-
   flex-direction: column;
-
   gap: 1rem;
 }
 
 .lightbox figure img {
   max-width: 100%;
   max-height: calc(100% - 2rem);
-
   object-fit: contain;
-
   border-radius: 1rem;
 }
 
 .lightbox figcaption {
   color: var(--gray);
-
   font-size: 0.8rem;
 }
 
 .lightbox-close,
 .lightbox-nav {
   position: absolute;
-
   border: 0;
-
   background: transparent;
-
   color: var(--white);
-
   cursor: pointer;
-
   z-index: 2;
 }
 
 .lightbox-close {
   top: 0.7rem;
   right: 1rem;
-
   font-size: 2.2rem;
 }
 
 .lightbox-nav {
   top: 50%;
-
   font-size: 2rem;
 }
 
@@ -1464,16 +1292,13 @@ h2 em {
   color: var(--purple);
 }
 
-
 /* =========================================================
-   ANIMAÇÕES
+   ANIMAÇÕES DE ENTRADA
 ========================================================= */
 
 .reveal {
   opacity: 0;
-
-  transform:
-    translateY(16px);
+  transform: translateY(16px);
 
   transition:
     opacity 0.6s ease,
@@ -1482,30 +1307,108 @@ h2 em {
 
 .reveal.visible {
   opacity: 1;
-
   transform: none;
 }
 
+/* =========================================================
+   BRILHO DINÂMICO — ELEMENTOS DO SITE
+========================================================= */
+
+.button,
+.text-link,
+.service-card,
+.art-card-main,
+.about-mark,
+.benefit,
+.hours-card,
+.contact-card {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+/* Camada de brilho que acompanha o cursor */
+.button::before,
+.text-link::before,
+.service-card::before,
+.art-card-main::before,
+.about-mark::before,
+.benefit::before,
+.hours-card::before,
+.contact-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0;
+
+  background: radial-gradient(
+    circle 150px at var(--glow-x, 50%) var(--glow-y, 50%),
+    rgba(200, 109, 245, 0.35),
+    rgba(166, 13, 236, 0.12) 45%,
+    transparent 75%
+  );
+
+  transition: opacity 0.3s ease;
+}
+
+/* Conteúdo acima da iluminação */
+.button > *,
+.text-link > *,
+.service-card > *,
+.art-card-main > *,
+.about-mark > *,
+.benefit > *,
+.hours-card > *,
+.contact-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Ativa o brilho ao passar o mouse */
+.button:hover::before,
+.text-link:hover::before,
+.service-card:hover::before,
+.art-card-main:hover::before,
+.about-mark:hover::before,
+.benefit:hover::before,
+.hours-card:hover::before,
+.contact-card:hover::before {
+  opacity: 1;
+}
+
+/* Movimento de profundidade durante a rolagem */
+.floating-star,
+.hero-orb {
+  translate: 0 var(--parallax-y, 0px);
+}
+
+/* Respeita quem prefere menos movimento */
+@media (prefers-reduced-motion: reduce) {
+  .floating-star,
+  .hero-orb {
+    translate: none;
+  }
+}
 
 /* =========================================================
    TABLET
 ========================================================= */
 
 @media (max-width: 900px) {
-
   .hero-grid {
     grid-template-columns: 1fr;
   }
 
   .hero-art {
     width: min(25rem, 100%);
-
     margin: 0 auto;
+    transform: none;
   }
 
   .about-grid {
     grid-template-columns: 1fr;
-
     gap: 3rem;
   }
 
@@ -1515,36 +1418,26 @@ h2 em {
 
   .hours-wrap {
     grid-template-columns: 1fr;
-
     gap: 3rem;
   }
 
   .benefits-grid {
-    grid-template-columns:
-      repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr);
   }
-
 }
-
 
 /* =========================================================
    MOBILE
 ========================================================= */
 
 @media (max-width: 760px) {
-
   .container {
-    width:
-      min(
-        100% - 2rem,
-        1120px
-      );
+    width: min(100% - 2rem, 1120px);
   }
 
   .section {
     padding: 5rem 0;
   }
-
 
   /* HEADER MOBILE */
 
@@ -1558,40 +1451,24 @@ h2 em {
 
   .nav-links {
     position: absolute;
-
     top: 4.8rem;
-
     left: 1rem;
     right: 1rem;
 
     display: flex;
-
     flex-direction: column;
-
     align-items: stretch;
-
     gap: 0.15rem;
-
     padding: 0.7rem;
 
     background: #090909;
-
-    border:
-      1px solid
-      rgba(166, 13, 236, 0.4);
-
+    border: 1px solid rgba(166, 13, 236, 0.4);
     border-radius: 1rem;
-
-    box-shadow:
-      0 20px 50px
-      rgba(0, 0, 0, 0.7);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
 
     opacity: 0;
-
     visibility: hidden;
-
-    transform:
-      translateY(-0.5rem);
+    transform: translateY(-0.5rem);
 
     transition:
       opacity 0.25s ease,
@@ -1601,69 +1478,40 @@ h2 em {
 
   .nav-links.open {
     opacity: 1;
-
     visibility: visible;
-
     transform: none;
   }
 
   .nav-links > a {
-    padding:
-      0.9rem
-      1rem;
-
+    padding: 0.9rem 1rem;
     border-radius: 0.7rem;
   }
 
   .nav-links > a:not(.nav-cta):hover {
-    background:
-      rgba(166, 13, 236, 0.1);
+    background: rgba(166, 13, 236, 0.1);
   }
-
-  /*
-     No celular o Agendar continua
-     sendo um link, não um botão gigante.
-  */
 
   .nav-links .nav-cta {
     margin: 0.2rem 0;
-
-    border-top:
-      1px solid
-      rgba(166, 13, 236, 0.25);
-
+    border-top: 1px solid rgba(166, 13, 236, 0.25);
     border-radius: 0;
-
     padding-top: 1rem;
-
     color: var(--purple);
   }
-
 
   /* HERO */
 
   .hero {
     min-height: auto;
-
     padding-top: 8rem;
   }
 
   h1 {
-    font-size:
-      clamp(
-        3.3rem,
-        15vw,
-        5rem
-      );
+    font-size: clamp(3.3rem, 15vw, 5rem);
   }
 
   h2 {
-    font-size:
-      clamp(
-        2.5rem,
-        12vw,
-        4rem
-      );
+    font-size: clamp(2.5rem, 12vw, 4rem);
   }
 
   .hero-actions {
@@ -1675,20 +1523,21 @@ h2 em {
   }
 
   .hero-art {
-    height: 19rem;
+  height: 19rem;
+  width: calc(100% + 1rem);
+  max-width: 25rem;
+  margin: 0 auto;
+  transform: translateX(0.5rem);
   }
-
 
   /* SERVIÇOS */
 
   .services-grid {
-    grid-template-columns:
-      repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .service-card {
     min-height: 13rem;
-
     padding: 1.1rem;
   }
 
@@ -1696,15 +1545,11 @@ h2 em {
     font-size: 1.25rem;
   }
 
-
   /* GALERIA */
 
   .gallery-grid {
-    grid-template-columns:
-      repeat(2, 1fr);
-
+    grid-template-columns: repeat(2, 1fr);
     grid-auto-rows: 10rem;
-
     gap: 0.7rem;
   }
 
@@ -1712,14 +1557,11 @@ h2 em {
     grid-row: span 1;
   }
 
-
   /* BENEFÍCIOS */
 
   .benefits-grid {
-    grid-template-columns:
-      repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr);
   }
-
 
   /* FOOTER */
 
@@ -1729,16 +1571,13 @@ h2 em {
 
   .footer-row > p {
     width: 100%;
-
     order: 3;
   }
-
 
   /* MODAL */
 
   .booking-modal {
     width: calc(100% - 1.5rem);
-
     max-height: 92vh;
   }
 
@@ -1750,14 +1589,11 @@ h2 em {
     grid-template-columns: 1fr;
   }
 
-
   /* LIGHTBOX */
 
   .lightbox {
     width: 94vw;
-
     height: 80vh;
-
     padding: 2.5rem 1rem;
   }
 
@@ -1768,19 +1604,15 @@ h2 em {
   .lightbox-next {
     right: 0.5rem;
   }
-
 }
-
 
 /* =========================================================
    CELULAR PEQUENO
 ========================================================= */
 
 @media (max-width: 390px) {
-
   .container {
-    width:
-      calc(100% - 1.5rem);
+    width: calc(100% - 1.5rem);
   }
 
   .services-grid {
@@ -1796,29 +1628,38 @@ h2 em {
   }
 
   .contact-card {
-    padding:
-      4rem
-      1rem;
+    padding: 4rem 1rem;
   }
-
 }
-
 
 /* =========================================================
    REDUÇÃO DE MOVIMENTO
 ========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
-
   html {
     scroll-behavior: auto;
   }
 
   .reveal {
     opacity: 1;
-
     transform: none;
+    transition: none;
+  }
 
+  .floating-star,
+  .sparkle {
+    animation: none;
+  }
+
+  .button::before,
+  .text-link::before,
+  .service-card::before,
+  .art-card-main::before,
+  .about-mark::before,
+  .benefit::before,
+  .hours-card::before,
+  .contact-card::before {
     transition: none;
   }
 
@@ -1826,8 +1667,6 @@ h2 em {
   *::before,
   *::after {
     animation-duration: 0.01ms !important;
-
     transition-duration: 0.01ms !important;
   }
-
 }

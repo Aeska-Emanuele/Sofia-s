@@ -1,596 +1,243 @@
-/* =========================================================
-   SOPHIA.ARTNAILS
-   JAVASCRIPT COMPLETO
-========================================================= */
-
 document.addEventListener("DOMContentLoaded", () => {
-
   /* =======================================================
      CONFIGURAÇÃO
   ======================================================= */
 
   const WHATSAPP_NUMBER = "5531972598553";
 
-
   /* =======================================================
      MENU MOBILE
   ======================================================= */
 
-  const menuButton =
-    document.querySelector(
-      ".mobile-menu-button"
-    );
-
-  const menu =
-    document.querySelector(
-      "#site-menu"
-    );
-
+  const menuButton = document.querySelector(".mobile-menu-button");
+  const menu = document.querySelector("#site-menu");
 
   const closeMenu = () => {
-
-    if (!menu || !menuButton) {
-      return;
-    }
+    if (!menu || !menuButton) return;
 
     menu.classList.remove("open");
-
-    menuButton.setAttribute(
-      "aria-expanded",
-      "false"
-    );
-
-    menuButton.setAttribute(
-      "aria-label",
-      "Abrir menu"
-    );
-
+    menuButton.setAttribute("aria-expanded", "false");
+    menuButton.setAttribute("aria-label", "Abrir menu");
   };
 
-
   if (menuButton && menu) {
+    menuButton.addEventListener("click", () => {
+      const isOpen = menu.classList.toggle("open");
 
-    menuButton.addEventListener(
-      "click",
-      () => {
+      menuButton.setAttribute("aria-expanded", String(isOpen));
+      menuButton.setAttribute(
+        "aria-label",
+        isOpen ? "Fechar menu" : "Abrir menu"
+      );
+    });
 
-        const isOpen =
-          menu.classList.toggle(
-            "open"
-          );
+    menu.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", closeMenu);
+    });
 
-        menuButton.setAttribute(
-          "aria-expanded",
-          String(isOpen)
-        );
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") closeMenu();
+    });
 
-        menuButton.setAttribute(
-          "aria-label",
-          isOpen
-            ? "Fechar menu"
-            : "Abrir menu"
-        );
-
-      }
-    );
-
-
-    menu
-      .querySelectorAll("a")
-      .forEach((link) => {
-
-        link.addEventListener(
-          "click",
-          () => {
-
-            closeMenu();
-
-          }
-        );
-
-      });
-
-
-    document.addEventListener(
-      "keydown",
-      (event) => {
-
-        if (event.key === "Escape") {
-          closeMenu();
-        }
-
-      }
-    );
-
-
-    window.addEventListener(
-      "resize",
-      () => {
-
-        if (
-          window.innerWidth > 760
-        ) {
-
-          closeMenu();
-
-        }
-
-      }
-    );
-
+    window.addEventListener("resize", () => {
+      if (window.innerWidth > 760) closeMenu();
+    });
   }
-
 
   /* =======================================================
      HEADER AO ROLAR
   ======================================================= */
 
-  const header =
-    document.querySelector(
-      ".site-header"
-    );
-
+  const header = document.querySelector(".site-header");
 
   const updateHeader = () => {
+    if (!header) return;
 
-    if (!header) {
-      return;
-    }
-
-    header.classList.toggle(
-      "scrolled",
-      window.scrollY > 20
-    );
-
+    header.classList.toggle("scrolled", window.scrollY > 20);
   };
-
 
   updateHeader();
 
-
-  window.addEventListener(
-    "scroll",
-    updateHeader,
-    { passive: true }
-  );
-
+  window.addEventListener("scroll", updateHeader, {
+    passive: true
+  });
 
   /* =======================================================
-     ANIMAÇÕES
+     ANIMAÇÕES DE ENTRADA
   ======================================================= */
 
-  const revealElements =
-    document.querySelectorAll(
-      ".reveal"
-    );
+const revealElements = document.querySelectorAll(".reveal");
 
-
-  if (
-    "IntersectionObserver"
-    in window
-  ) {
-
-    const observer =
-      new IntersectionObserver(
-        (entries, observer) => {
-
-          entries.forEach(
-            (entry) => {
-
-              if (
-                entry.isIntersecting
-              ) {
-
-                entry.target.classList.add(
-                  "visible"
-                );
-
-                observer.unobserve(
-                  entry.target
-                );
-
-              }
-
-            }
-          );
-
-        },
-        {
-          threshold: 0.12
+if ("IntersectionObserver" in window) {
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+        } else {
+          entry.target.classList.remove("visible");
         }
-      );
+      });
+    },
+    {
+      threshold: 0.15
+    }
+  );
 
-
-    revealElements.forEach(
-      (element) => {
-
-        observer.observe(element);
-
-      }
-    );
-
-  } else {
-
-    revealElements.forEach(
-      (element) => {
-
-        element.classList.add(
-          "visible"
-        );
-
-      }
-    );
-
-  }
-
+  revealElements.forEach((element) => {
+    observer.observe(element);
+  });
+} else {
+  revealElements.forEach((element) => {
+    element.classList.add("visible");
+  });
+}
 
   /* =======================================================
      AGENDAMENTO
   ======================================================= */
 
-  const bookingModal =
-    document.querySelector(
-      "#agendamento"
-    );
-
-  const bookingForm =
-    document.querySelector(
-      "#booking-form"
-    );
-
-  const bookingClose =
-    document.querySelector(
-      ".modal-close"
-    );
-
-  const bookingService =
-    document.querySelector(
-      "#booking-service"
-    );
-
-  const bookingDate =
-    document.querySelector(
-      "#booking-date"
-    );
-
-  const bookingWhatsapp =
-    document.querySelector(
-      "#booking-whatsapp"
-    );
-
+  const bookingModal = document.querySelector("#agendamento");
+  const bookingForm = document.querySelector("#booking-form");
+  const bookingClose = document.querySelector(".modal-close");
+  const bookingService = document.querySelector("#booking-service");
+  const bookingDate = document.querySelector("#booking-date");
+  const bookingWhatsapp = document.querySelector("#booking-whatsapp");
 
   /* =======================================================
      DATA MÍNIMA
   ======================================================= */
 
   if (bookingDate) {
+    const today = new Date();
 
-    const today =
-      new Date();
+    const year = today.getFullYear();
+    const month = String(today.getMonth() + 1).padStart(2, "0");
+    const day = String(today.getDate()).padStart(2, "0");
 
-    const year =
-      today.getFullYear();
-
-    const month =
-      String(
-        today.getMonth() + 1
-      ).padStart(2, "0");
-
-    const day =
-      String(
-        today.getDate()
-      ).padStart(2, "0");
-
-    bookingDate.min =
-      `${year}-${month}-${day}`;
-
+    bookingDate.min = `${year}-${month}-${day}`;
   }
-
 
   /* =======================================================
      MÁSCARA WHATSAPP
   ======================================================= */
 
   if (bookingWhatsapp) {
+    bookingWhatsapp.addEventListener("input", () => {
+      let value = bookingWhatsapp.value
+        .replace(/\D/g, "")
+        .slice(0, 11);
 
-    bookingWhatsapp.addEventListener(
-      "input",
-      () => {
-
-        let value =
-          bookingWhatsapp.value
-            .replace(/\D/g, "")
-            .slice(0, 11);
-
-
-        if (
-          value.length > 10
-        ) {
-
-          value =
-            value.replace(
-              /^(\d{2})(\d{5})(\d{0,4})/,
-              "($1) $2-$3"
-            );
-
-        } else if (
-          value.length > 6
-        ) {
-
-          value =
-            value.replace(
-              /^(\d{2})(\d{4})(\d{0,4})/,
-              "($1) $2-$3"
-            );
-
-        } else if (
-          value.length > 2
-        ) {
-
-          value =
-            value.replace(
-              /^(\d{2})(\d{0,5})/,
-              "($1) $2"
-            );
-
-        } else {
-
-          value =
-            value.replace(
-              /^(\d{0,2})/,
-              "($1"
-            );
-
-        }
-
-
-        bookingWhatsapp.value =
-          value;
-
+      if (value.length > 10) {
+        value = value.replace(
+          /^(\d{2})(\d{5})(\d{0,4})/,
+          "($1) $2-$3"
+        );
+      } else if (value.length > 6) {
+        value = value.replace(
+          /^(\d{2})(\d{4})(\d{0,4})/,
+          "($1) $2-$3"
+        );
+      } else if (value.length > 2) {
+        value = value.replace(
+          /^(\d{2})(\d{0,5})/,
+          "($1) $2"
+        );
+      } else {
+        value = value.replace(/^(\d{0,2})/, "($1");
       }
-    );
 
+      bookingWhatsapp.value = value;
+    });
   }
-
 
   /* =======================================================
      ABRIR MODAL
   ======================================================= */
 
-  const openBooking = (
-    service = ""
-  ) => {
-
+  const openBooking = (service = "") => {
     closeMenu();
 
+    if (!bookingModal) return;
 
-    if (!bookingModal) {
-      return;
+    if (service && bookingService) {
+      bookingService.value = service;
     }
 
-
-    /*
-       Se o botão veio de um serviço,
-       seleciona automaticamente.
-    */
-
-    if (
-      service &&
-      bookingService
-    ) {
-
-      bookingService.value =
-        service;
-
-    }
-
-
-    /*
-       Abre o modal.
-    */
-
-    if (
-      typeof bookingModal.showModal
-      === "function"
-    ) {
-
+    if (typeof bookingModal.showModal === "function") {
       bookingModal.showModal();
-
     } else {
-
-      bookingModal.setAttribute(
-        "open",
-        ""
-      );
-
+      bookingModal.setAttribute("open", "");
     }
 
-
-    /*
-       Coloca o cursor no nome.
-    */
-
-    setTimeout(
-      () => {
-
-        document
-          .querySelector(
-            "#booking-name"
-          )
-          ?.focus();
-
-      },
-      100
-    );
-
+    setTimeout(() => {
+      document.querySelector("#booking-name")?.focus();
+    }, 100);
   };
-
 
   /* =======================================================
      BOTÕES DE AGENDAMENTO
   ======================================================= */
 
-  document
-    .querySelectorAll(
-      "[data-booking-open]"
-    )
-    .forEach((button) => {
+  document.querySelectorAll("[data-booking-open]").forEach((button) => {
+    button.addEventListener("click", (event) => {
+      event.preventDefault();
 
-      button.addEventListener(
-        "click",
-        (event) => {
+      const service = button.dataset.service || "";
 
-          event.preventDefault();
-
-          const service =
-            button.dataset.service
-            || "";
-
-          openBooking(
-            service
-          );
-
-        }
-      );
-
+      openBooking(service);
     });
-
+  });
 
   /* =======================================================
      FECHAR MODAL
   ======================================================= */
 
-  if (bookingClose) {
-
-    bookingClose.addEventListener(
-      "click",
-      () => {
-
-        bookingModal.close();
-
-      }
-    );
-
+  if (bookingClose && bookingModal) {
+    bookingClose.addEventListener("click", () => {
+      bookingModal.close();
+    });
   }
-
-
-  /*
-     Fecha clicando fora da caixa.
-  */
 
   if (bookingModal) {
-
-    bookingModal.addEventListener(
-      "click",
-      (event) => {
-
-        if (
-          event.target ===
-          bookingModal
-        ) {
-
-          bookingModal.close();
-
-        }
-
+    bookingModal.addEventListener("click", (event) => {
+      if (event.target === bookingModal) {
+        bookingModal.close();
       }
-    );
-
+    });
   }
-
 
   /* =======================================================
      ENVIAR FORMULÁRIO
   ======================================================= */
 
   if (bookingForm) {
+    bookingForm.addEventListener("submit", (event) => {
+      event.preventDefault();
 
-    bookingForm.addEventListener(
-      "submit",
-      (event) => {
+      const nome = document
+        .querySelector("#booking-name")
+        ?.value.trim();
 
-        event.preventDefault();
+      const whatsapp = document
+        .querySelector("#booking-whatsapp")
+        ?.value.trim();
 
+      const servico = bookingService?.value;
+      const data = bookingDate?.value;
 
-        /* ===============================
-           PEGAR DADOS
-        =============================== */
+      const horario = document
+        .querySelector("#booking-time")
+        ?.value;
 
-        const nome =
-          document
-            .querySelector(
-              "#booking-name"
-            )
-            ?.value
-            .trim();
+      if (!nome || !whatsapp || !servico || !data || !horario) {
+        return;
+      }
 
+      const [year, month, day] = data.split("-");
+      const dataFormatada = `${day}/${month}/${year}`;
 
-        const whatsapp =
-          document
-            .querySelector(
-              "#booking-whatsapp"
-            )
-            ?.value
-            .trim();
-
-
-        const servico =
-          bookingService
-            ?.value;
-
-
-        const data =
-          bookingDate
-            ?.value;
-
-
-        const horario =
-          document
-            .querySelector(
-              "#booking-time"
-            )
-            ?.value;
-
-
-        /* ===============================
-           VALIDAR
-        =============================== */
-
-        if (
-          !nome ||
-          !whatsapp ||
-          !servico ||
-          !data ||
-          !horario
-        ) {
-
-          return;
-
-        }
-
-
-        /* ===============================
-           FORMATAR DATA
-        =============================== */
-
-        const [
-          year,
-          month,
-          day
-        ] =
-          data.split("-");
-
-
-        const dataFormatada =
-          `${day}/${month}/${year}`;
-
-
-        /* ===============================
-           MENSAGEM
-        =============================== */
-
-        const mensagem =
-`Olá, Sophia! Gostaria de agendar um horário. 💅
+      const mensagem = `Olá, Sophia! Gostaria de agendar um horário. 💅
 
 📋 DADOS DO AGENDAMENTO
 
@@ -603,273 +250,172 @@ WhatsApp: ${whatsapp}
 
 Aguardo a confirmação do horário. 💕`;
 
+      const linkWhatsApp =
+        `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(mensagem)}`;
 
-        /* ===============================
-           LINK WHATSAPP
-        =============================== */
+      window.open(linkWhatsApp, "_blank");
 
-        const linkWhatsApp =
-          `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
-            mensagem
-          )}`;
-
-
-        /* ===============================
-           ABRIR WHATSAPP
-        =============================== */
-
-        window.open(
-          linkWhatsApp,
-          "_blank"
-        );
-
-
-        /* ===============================
-           FECHAR MODAL
-        =============================== */
-
-        if (bookingModal) {
-
-          bookingModal.close();
-
-        }
-
+      if (bookingModal) {
+        bookingModal.close();
       }
-    );
-
+    });
   }
-
 
   /* =======================================================
      LIGHTBOX
   ======================================================= */
 
-  const galleryItems =
-    [
-      ...document.querySelectorAll(
-        ".gallery-item"
-      )
-    ];
+  const galleryItems = [
+    ...document.querySelectorAll(".gallery-item")
+  ];
 
-
-  const lightbox =
-    document.querySelector(
-      ".lightbox"
-    );
-
-  const lightboxImage =
-    lightbox?.querySelector(
-      "figure img"
-    );
-
-  const lightboxCaption =
-    lightbox?.querySelector(
-      "figcaption"
-    );
-
-  const lightboxClose =
-    lightbox?.querySelector(
-      ".lightbox-close"
-    );
-
-  const lightboxPrev =
-    lightbox?.querySelector(
-      ".lightbox-prev"
-    );
-
-  const lightboxNext =
-    lightbox?.querySelector(
-      ".lightbox-next"
-    );
-
+  const lightbox = document.querySelector(".lightbox");
+  const lightboxImage = lightbox?.querySelector("figure img");
+  const lightboxCaption = lightbox?.querySelector("figcaption");
+  const lightboxClose = lightbox?.querySelector(".lightbox-close");
+  const lightboxPrev = lightbox?.querySelector(".lightbox-prev");
+  const lightboxNext = lightbox?.querySelector(".lightbox-next");
 
   let currentIndex = 0;
 
-
-  const showImage = (
-    index
-  ) => {
-
-    if (
-      !galleryItems.length ||
-      !lightboxImage
-    ) {
-
-      return;
-
-    }
-
+  const showImage = (index) => {
+    if (!galleryItems.length || !lightboxImage) return;
 
     currentIndex =
-      (
-        index +
-        galleryItems.length
-      ) %
-      galleryItems.length;
+      (index + galleryItems.length) % galleryItems.length;
 
+    const item = galleryItems[currentIndex];
+    const image = item.querySelector("img");
 
-    const item =
-      galleryItems[
-        currentIndex
-      ];
+    if (!image) return;
 
-
-    const image =
-      item.querySelector(
-        "img"
-      );
-
-
-    if (!image) {
-      return;
-    }
-
-
-    lightboxImage.src =
-      image.src;
-
-    lightboxImage.alt =
-      image.alt;
-
+    lightboxImage.src = image.src;
+    lightboxImage.alt = image.alt;
 
     if (lightboxCaption) {
-
       lightboxCaption.textContent =
-        `Trabalho ${
-          currentIndex + 1
-        }`;
-
+        `Trabalho ${currentIndex + 1}`;
     }
-
   };
 
+  galleryItems.forEach((item, index) => {
+    item.addEventListener("click", () => {
+      showImage(index);
 
-  galleryItems.forEach(
-    (item, index) => {
-
-      item.addEventListener(
-        "click",
-        () => {
-
-          showImage(index);
-
-          if (
-            typeof lightbox
-              ?.showModal ===
-            "function"
-          ) {
-
-            lightbox.showModal();
-
-          }
-
-        }
-      );
-
-    }
-  );
-
-
-  lightboxClose?.addEventListener(
-    "click",
-    () => {
-
-      lightbox.close();
-
-    }
-  );
-
-
-  lightboxPrev?.addEventListener(
-    "click",
-    () => {
-
-      showImage(
-        currentIndex - 1
-      );
-
-    }
-  );
-
-
-  lightboxNext?.addEventListener(
-    "click",
-    () => {
-
-      showImage(
-        currentIndex + 1
-      );
-
-    }
-  );
-
-
-  /*
-     ESC fecha o lightbox
-     usando o comportamento padrão
-     do <dialog>.
-  */
-
-
-  /* =======================================================
-     TECLAS ← →
-  ======================================================= */
-
-  document.addEventListener(
-    "keydown",
-    (event) => {
-
-      if (
-        !lightbox ||
-        !lightbox.open
-      ) {
-
-        return;
-
+      if (typeof lightbox?.showModal === "function") {
+        lightbox.showModal();
       }
+    });
+  });
 
+  lightboxClose?.addEventListener("click", () => {
+    lightbox.close();
+  });
 
-      if (
-        event.key === "ArrowLeft"
-      ) {
+  lightboxPrev?.addEventListener("click", () => {
+    showImage(currentIndex - 1);
+  });
 
-        showImage(
-          currentIndex - 1
-        );
+  lightboxNext?.addEventListener("click", () => {
+    showImage(currentIndex + 1);
+  });
 
-      }
+  document.addEventListener("keydown", (event) => {
+    if (!lightbox || !lightbox.open) return;
 
-
-      if (
-        event.key === "ArrowRight"
-      ) {
-
-        showImage(
-          currentIndex + 1
-        );
-
-      }
-
+    if (event.key === "ArrowLeft") {
+      showImage(currentIndex - 1);
     }
-  );
 
+    if (event.key === "ArrowRight") {
+      showImage(currentIndex + 1);
+    }
+  });
 
   /* =======================================================
      ANO DO RODAPÉ
   ======================================================= */
 
-  const year =
-    document.querySelector(
-      "#year"
-    );
+  const yearElement = document.querySelector("#year");
 
-
-  if (year) {
-
-    year.textContent =
-      new Date()
-        .getFullYear();
-
+  if (yearElement) {
+    yearElement.textContent = new Date().getFullYear();
   }
 
+  /* =======================================================
+     BRILHO DINÂMICO — BOTÕES E CARDS
+  ======================================================= */
+
+  const glowElements = document.querySelectorAll(
+    ".button, .text-link, .service-card, .art-card-main, .about-mark, .benefit, .hours-card, .contact-card"
+  );
+
+  glowElements.forEach((element) => {
+    element.addEventListener("pointermove", (event) => {
+      const rect = element.getBoundingClientRect();
+
+      const x = event.clientX - rect.left;
+      const y = event.clientY - rect.top;
+
+      element.style.setProperty("--glow-x", `${x}px`);
+      element.style.setProperty("--glow-y", `${y}px`);
+    });
+  });
+
+  /* =======================================================
+     PARALLAX Y2K — MOVIMENTO DURANTE A ROLAGEM
+  ======================================================= */
+
+  const parallaxElements = document.querySelectorAll(
+    ".floating-star, .hero-orb"
+  );
+
+  const prefersReducedMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+  ).matches;
+
+  if (parallaxElements.length && !prefersReducedMotion) {
+    let ticking = false;
+
+    const updateParallax = () => {
+      parallaxElements.forEach((element) => {
+        const rect = element.getBoundingClientRect();
+
+        const speed = element.classList.contains("floating-star")
+          ? 0.12
+          : 0.07;
+
+        const distance =
+          (window.innerHeight / 2 -
+            (rect.top + rect.height / 2)) * speed;
+
+        const movement = Math.max(
+          -22,
+          Math.min(22, distance)
+        );
+
+        element.style.setProperty(
+          "--parallax-y",
+          `${movement}px`
+        );
+      });
+
+      ticking = false;
+    };
+
+    const requestParallaxUpdate = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(updateParallax);
+        ticking = true;
+      }
+    };
+
+    window.addEventListener("scroll", requestParallaxUpdate, {
+      passive: true
+    });
+
+    window.addEventListener("resize", requestParallaxUpdate);
+
+    updateParallax();
+  }
 });
