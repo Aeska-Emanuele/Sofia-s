@@ -1426,6 +1426,65 @@ h2 em {
   }
 }
 
+/* ═══════════════════════════════════════════════
+   FLUTUAÇÃO DOS CARDS DE SERVIÇOS
+   ═══════════════════════════════════════════════ */
+
+.service-card-content {
+  width: 100%;
+  height: 100%;
+  animation: service-card-float 5s ease-in-out infinite;
+}
+
+/* Pequenas diferenças entre os cards */
+.service-card:nth-child(2) .service-card-content {
+  animation-delay: -1.2s;
+}
+
+.service-card:nth-child(3) .service-card-content {
+  animation-delay: -2.4s;
+}
+
+.service-card:nth-child(4) .service-card-content {
+  animation-delay: -3.6s;
+}
+
+.service-card:nth-child(5) .service-card-content {
+  animation-delay: -4.8s;
+}
+
+.service-card:nth-child(6) .service-card-content {
+  animation-delay: -6s;
+}
+
+@keyframes service-card-float {
+  0%,
+  100% {
+    transform: translateY(-3px) rotate(-0.25deg);
+  }
+
+  50% {
+    transform: translateY(3px) rotate(0.25deg);
+  }
+}
+
+/* Respeita quem prefere menos movimento */
+@media (prefers-reduced-motion: reduce) {
+  .service-card-content {
+    animation: none;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
 /* =========================================================
    MOBILE
 ========================================================= */
