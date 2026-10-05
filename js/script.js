@@ -74,8 +74,7 @@ if ("IntersectionObserver" in window) {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           entry.target.classList.add("visible");
-        } else {
-          entry.target.classList.remove("visible");
+          observer.unobserve(entry.target);
         }
       });
     },
@@ -346,9 +345,9 @@ Aguardo a confirmação do horário. 💕`;
      BRILHO DINÂMICO — BOTÕES E CARDS
   ======================================================= */
 
-  const glowElements = document.querySelectorAll(
-    ".button, .text-link, .service-card, .art-card-main, .about-mark, .benefit, .hours-card, .contact-card"
-  );
+  // O glow interativo fica concentrado no hero para manter a
+  // assinatura Y2K sem transformar cada componente em um efeito.
+  const glowElements = document.querySelectorAll(".art-card-main");
 
   glowElements.forEach((element) => {
     element.addEventListener("pointermove", (event) => {
