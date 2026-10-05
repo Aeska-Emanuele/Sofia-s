@@ -2713,3 +2713,466 @@ h2 em {
     transition-duration: 0.01ms !important;
   }
 }
+/* =========================================
+   MOBILE — FOTO DA SOPHIA NO CARD DO HERO
+   ========================================= */
+
+@media (max-width: 760px) {
+
+  /* Mantém o texto como está */
+  .hero-copy {
+    text-align: center;
+  }
+
+  /* Área da imagem */
+    .hero-art {
+    position: relative !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: 28rem !important;
+    margin: 0 auto !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    transform: none !important;
+    left: auto !important;
+    right: auto !important;
+  }
+
+  .hero-art .art-card-main {
+    position: absolute !important;
+
+    width: 72% !important;
+    height: 82% !important;
+
+    left: 50% !important;
+    right: auto !important;
+    top: 50% !important;
+    bottom: auto !important;
+
+    margin: 0 !important;
+
+    transform: translate(-50%, -50%) rotate(-2deg);
+
+    z-index: 3 !important;
+  }
+  }
+
+  /* Remove as estrelas que estavam DENTRO do card */
+  .hero-art .art-card-main .art-star-1,
+  .hero-art .art-card-main .art-star-2,
+  .hero-art .art-card-main .art-star-3,
+  .hero-art .art-card-main .art-star-4,
+  .hero-art .art-card-main .art-star-5,
+  .hero-art .art-card-main .art-star-6,
+  .hero-art .art-card-main .art-star-7,
+  .hero-art .art-card-main .art-star-8,
+  .hero-art .art-card-main .art-star-9,
+  .hero-art .art-card-main .art-star-10,
+  .hero-art .art-card-main .art-star-11,
+  .hero-art .art-card-main .art-star-12,
+  .hero-art .art-card-main .art-star-13,
+  .hero-art .art-card-main .art-star-14,
+  .hero-art .art-card-main .art-star-15,
+  .hero-art .art-card-main .art-star-16 {
+    display: none;
+  }
+
+  /* Esconde o segundo card */
+  .hero-art .art-card-back {
+    display: none;
+  }
+  
+
+    /* SOBRE A SOFIA — REMOVE A SEGUNDA FOTO */
+
+  .about-sofia-image {
+    display: none;
+  }
+
+  .about-sofia-content {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  /* Estrelas ficam FORA da foto */
+  .hero-art::before,
+  .hero-art::after {
+    position: absolute;
+    z-index: 5;
+    color: var(--white);
+    font-family: Georgia, serif;
+    text-shadow:
+      0 0 8px rgba(166, 13, 236, .9),
+      0 0 18px rgba(166, 13, 236, .55);
+    pointer-events: none;
+  }
+
+  .hero-art::before {
+    content: "✦";
+    top: 7%;
+    left: 9%;
+    font-size: 1.5rem;
+  }
+
+  .hero-art::after {
+    content: "✧";
+    bottom: 8%;
+    right: 8%;
+    font-size: 1.7rem;
+  }
+
+  /* Mantém as estrelas flutuantes externas */
+  .hero-art .floating-star {
+    z-index: 6;
+  }
+
+  .hero-art .star-a {
+    top: 12%;
+    right: 10%;
+  }
+
+  .hero-art .star-b {
+    bottom: 15%;
+    left: 9%;
+  }
+
+
+/* =========================================================
+   Y2K REFINEMENT — ISSUE #3
+   Preserva a identidade retro-digital com hierarquia mais
+   editorial, efeitos concentrados e acabamento consistente.
+========================================================= */
+
+:root {
+  --purple: #b426f2;
+  --purple-dark: #7a12ad;
+  --purple-light: #dc9cff;
+  --black-soft: #080808;
+  --surface: #0d0d0f;
+  --gray: #aaa6ad;
+  --border: rgba(255, 255, 255, 0.12);
+  --radius: 1.15rem;
+  --shadow: 0 22px 60px rgba(0, 0, 0, 0.34);
+}
+
+body {
+  background: #050505;
+  letter-spacing: -0.01em;
+}
+
+h1,
+h2 {
+  letter-spacing: -0.045em;
+}
+
+h1 em,
+h2 em {
+  color: var(--purple-light);
+}
+
+.section {
+  padding: clamp(5.5rem, 9vw, 8rem) 0;
+}
+
+.eyebrow {
+  color: var(--purple-light);
+  letter-spacing: 0.18em;
+}
+
+.sparkle {
+  text-shadow: 0 0 14px rgba(180, 38, 242, 0.48);
+  animation: none;
+}
+
+.site-header.scrolled {
+  background: rgba(5, 5, 5, 0.88);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: none;
+}
+
+.brand {
+  letter-spacing: -0.045em;
+}
+
+.nav-links {
+  font-weight: 600;
+}
+
+.nav-cta {
+  padding: 0.6rem 1rem !important;
+  border: 1px solid rgba(220, 156, 255, 0.42);
+  border-radius: 999px;
+}
+
+.nav-cta:hover {
+  color: #fff;
+  background: rgba(180, 38, 242, 0.12);
+  border-color: var(--purple-light);
+}
+
+.hero {
+  background:
+    radial-gradient(circle at 82% 30%, rgba(180, 38, 242, 0.17), transparent 25rem),
+    linear-gradient(135deg, #030303 0%, #09050b 58%, #120817 100%);
+}
+
+.hero-description {
+  color: #b7b2ba;
+  line-height: 1.75;
+}
+
+.button {
+  min-height: 3rem;
+  padding: 0.82rem 1.35rem;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  transition: transform 180ms ease, background 180ms ease, border-color 180ms ease;
+}
+
+.button:hover {
+  transform: translateY(-1px);
+}
+
+.button-primary {
+  background: #b426f2;
+  box-shadow: none;
+}
+
+.button-primary:hover {
+  background: #c64cff;
+  box-shadow: none;
+}
+
+.button-ghost {
+  border-color: rgba(255, 255, 255, 0.22);
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.button-ghost:hover {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(255, 255, 255, 0.38);
+}
+
+.art-card-main {
+  border: 1px solid rgba(220, 156, 255, 0.34);
+  border-radius: 1.35rem;
+  background: #0b080d;
+  box-shadow: 18px 22px 0 rgba(122, 18, 173, 0.12), 0 28px 80px rgba(0, 0, 0, 0.42);
+  transform: rotate(1.5deg);
+}
+
+.art-card-main::after {
+  background: linear-gradient(145deg, rgba(255,255,255,.08), transparent 32%, rgba(180,38,242,.08));
+}
+
+.art-card-main .art-star {
+  text-shadow: 0 0 12px rgba(220, 156, 255, 0.62);
+  animation: none;
+  opacity: 0.8;
+}
+
+.art-star-3,
+.art-star-5,
+.art-star-6,
+.art-star-7,
+.art-star-8,
+.art-star-9,
+.art-star-10,
+.art-star-11,
+.art-star-12,
+.art-star-13,
+.art-star-14,
+.art-star-15,
+.art-star-16 {
+  display: none;
+}
+
+.symbol {
+  color: rgba(220, 156, 255, 0.7);
+  text-shadow: none;
+  opacity: 0.55;
+  animation: symbol-float 9s ease-in-out infinite;
+}
+
+.symbol-two {
+  opacity: 0.25;
+}
+
+.service-card {
+  min-height: 15.5rem;
+  border-color: rgba(255, 255, 255, 0.11);
+  border-radius: 1rem;
+  background: #0b0b0d;
+  box-shadow: none;
+}
+
+.service-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(220, 156, 255, 0.48);
+  box-shadow: 0 16px 45px rgba(0, 0, 0, 0.3);
+}
+
+.service-number {
+  color: rgba(220, 156, 255, 0.52);
+  font-size: 1rem;
+  letter-spacing: 0.08em;
+}
+
+.service-card h3 {
+  margin-top: 1.25rem;
+}
+
+.gallery {
+  background: #080808;
+}
+
+.gallery-grid {
+  gap: 0.8rem;
+}
+
+.gallery-item {
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 0.75rem;
+  background: #101012;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.025);
+  filter: saturate(1.04) contrast(1.02);
+}
+
+.gallery-item span {
+  left: 0.65rem;
+  bottom: 0.55rem;
+  padding: 0.18rem 0.42rem;
+  border: 1px solid rgba(255,255,255,.22);
+  border-radius: 999px;
+  background: rgba(0,0,0,.5);
+  font-size: 0.65rem;
+  letter-spacing: 0.08em;
+}
+
+.about {
+  background: linear-gradient(120deg, #050505, #0c070e);
+}
+
+.about-mark {
+  border: 1px solid rgba(220, 156, 255, 0.25);
+  background: radial-gradient(circle at 35% 25%, #1a0b20, #080808 65%);
+  box-shadow: none;
+}
+
+.about-sofia {
+  background: #050505;
+}
+
+.about-sofia::before {
+  border-color: rgba(220, 156, 255, 0.1);
+  box-shadow: none;
+}
+
+.about-sofia-content {
+  width: 100%;
+  max-width: 39rem;
+}
+
+.about-sofia-content h2 span {
+  color: var(--purple-light);
+  text-shadow: none;
+}
+
+.benefit {
+  border-top-color: rgba(220, 156, 255, 0.45);
+}
+
+.benefit > span {
+  color: var(--purple-light);
+}
+
+.hours-card {
+  border-color: rgba(255,255,255,.12);
+  border-radius: 1rem;
+  background: #0b0b0d;
+  box-shadow: none;
+}
+
+.contact-card {
+  border: 1px solid rgba(220, 156, 255, 0.22);
+  border-radius: 1.25rem;
+  background:
+    radial-gradient(circle at 78% 20%, rgba(180,38,242,.18), transparent 18rem),
+    linear-gradient(135deg, #0b080d, #17091d);
+}
+
+.booking-modal {
+  border-color: rgba(255,255,255,.14);
+  border-radius: 1.15rem;
+  background: #0a0a0c;
+}
+
+.form-field input,
+.form-field select {
+  border-color: rgba(255,255,255,.12);
+  border-radius: 0.7rem;
+  background: #101012;
+}
+
+.form-field input:focus,
+.form-field select:focus {
+  border-color: var(--purple-light);
+  box-shadow: 0 0 0 3px rgba(180, 38, 242, 0.1);
+}
+
+/* O brilho segue existindo como linguagem Y2K, mas fica restrito
+   ao hero em vez de aparecer em todos os componentes. */
+.button::before,
+.text-link::before,
+.service-card::before,
+.about-mark::before,
+.benefit::before,
+.hours-card::before,
+.contact-card::before {
+  display: none;
+}
+
+.art-card-main::before {
+  opacity: 0;
+  background: radial-gradient(circle 180px at var(--glow-x, 50%) var(--glow-y, 50%), rgba(220,156,255,.18), transparent 72%);
+}
+
+.art-card-main:hover::before {
+  opacity: 1;
+}
+
+.reveal {
+  transform: translateY(10px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+
+@media (max-width: 760px) {
+  .nav-cta {
+    border: 0;
+    border-top: 1px solid rgba(255,255,255,.12);
+  }
+
+  .hero {
+    background:
+      radial-gradient(circle at 50% 72%, rgba(180,38,242,.15), transparent 19rem),
+      #050505;
+  }
+
+  .hero-art .art-card-main {
+    border-radius: 1.1rem;
+    box-shadow: 10px 14px 0 rgba(122,18,173,.13), 0 24px 60px rgba(0,0,0,.38);
+  }
+
+  .hero-art::before,
+  .hero-art::after {
+    text-shadow: 0 0 12px rgba(220,156,255,.55);
+  }
+
+  .service-card {
+    min-height: 13rem;
+  }
+}

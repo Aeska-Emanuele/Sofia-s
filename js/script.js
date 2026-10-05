@@ -122,10 +122,31 @@ document.addEventListener("DOMContentLoaded", () => {
 
   updateHeader();
 
-  window.addEventListener(
-    "scroll",
-    updateHeader,
-    { passive: true }
+  window.addEventListener("scroll", updateHeader, {
+    passive: true
+  });
+
+  /* =======================================================
+     ANIMAÇÕES DE ENTRADA
+  ======================================================= */
+
+  const revealElements = document.querySelectorAll(".reveal");
+
+  if ("IntersectionObserver" in window) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0.15
+      }
+    );
+  }
   );
 
 
@@ -1256,4 +1277,80 @@ Aguardo a confirmação do horário. 💕`;
 
   }
 
+  /* =======================================================
+     BRILHO DINÂMICO — BOTÕES E CARDS
+  ======================================================= */
+
+  // O glow interativo fica concentrado no hero para manter a
+  // assinatura Y2K sem transformar cada componente em um efeito.
+  const glowElements = document.querySelectorAll(".art-card-main");
+
+  glowElements.forEach((element) => {
+    element.addEventListener("pointermove", (event) => {
+      const rect = element.getBoundingClientRect();
+
+      const x = event.clientX - rect.left;
+      const y = event.clientY - rect.top;
+
+      element.style.setProperty("--glow-x", `${x}px`);
+      element.style.setProperty("--glow-y", `${y}px`);
+    });
+  });
+
+  /* =======================================================
+     PARALLAX Y2K — MOVIMENTO DURANTE A ROLAGEM
+  ======================================================= */
+
+  const parallaxElements = document.querySelectorAll(
+    ".floating-star, .hero-orb"
+  );
+
+  const prefersReducedMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+  ).matches;
+
+  if (parallaxElements.length && !prefersReducedMotion) {
+    let ticking = false;
+
+    const updateParallax = () => {
+      parallaxElements.forEach((element) => {
+        const rect = element.getBoundingClientRect();
+
+        const speed = element.classList.contains("floating-star")
+          ? 0.12
+          : 0.07;
+
+        const distance =
+          (window.innerHeight / 2 -
+            (rect.top + rect.height / 2)) * speed;
+
+        const movement = Math.max(
+          -22,
+          Math.min(22, distance)
+        );
+
+        element.style.setProperty(
+          "--parallax-y",
+          `${movement}px`
+        );
+      });
+
+      ticking = false;
+    };
+
+    const requestParallaxUpdate = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(updateParallax);
+        ticking = true;
+      }
+    };
+
+    window.addEventListener("scroll", requestParallaxUpdate, {
+      passive: true
+    });
+
+    window.addEventListener("resize", requestParallaxUpdate);
+
+    updateParallax();
+  }
 });
