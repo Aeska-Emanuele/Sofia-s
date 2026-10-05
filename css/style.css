@@ -9,6 +9,7 @@
 
   --white: #ffffff;
   --gray: #b8b8b8;
+
   --border: rgba(166, 13, 236, 0.25);
 
   --serif: Georgia, "Times New Roman", serif;
@@ -16,8 +17,10 @@
 
   --radius: 1.5rem;
 
-  --shadow: 0 18px 50px rgba(166, 13, 236, 0.18);
+  --shadow:
+    0 18px 50px rgba(166, 13, 236, 0.18);
 }
+
 
 /* =========================================================
    RESET
@@ -93,6 +96,7 @@ h2 em {
   font-style: normal;
 }
 
+
 /* =========================================================
    ACESSIBILIDADE
 ========================================================= */
@@ -102,7 +106,9 @@ h2 em {
   left: 1rem;
   top: -5rem;
   z-index: 9999;
+
   padding: 0.75rem 1rem;
+
   background: var(--white);
   color: var(--black);
 }
@@ -115,6 +121,7 @@ h2 em {
   outline: 2px solid var(--purple);
   outline-offset: 4px;
 }
+
 
 /* =========================================================
    CONTAINER / SEÇÕES
@@ -129,26 +136,32 @@ h2 em {
   padding: 7rem 0;
 }
 
+
 /* =========================================================
    TEXTOS
 ========================================================= */
 
 .eyebrow {
   margin: 0 0 1rem;
+
   color: var(--purple);
+
   font-size: 0.7rem;
   font-weight: 700;
+
   letter-spacing: 0.14em;
   text-transform: uppercase;
 }
 
-/* Estrelinha do texto com brilho Y2K */
 .sparkle {
   display: inline-block;
+
   color: #e8c3ff;
+
   text-shadow:
     0 0 5px #c86df5,
     0 0 12px #a60dec;
+
   animation: y2k-sparkle 1.8s ease-in-out infinite;
 }
 
@@ -157,11 +170,13 @@ h2 em {
   margin-bottom: 3rem;
 }
 
+
 /* =========================================================
    ANIMAÇÕES Y2K
 ========================================================= */
 
 @keyframes y2k-twinkle {
+
   0%,
   100% {
     opacity: 0.55;
@@ -176,7 +191,9 @@ h2 em {
   }
 }
 
+
 @keyframes y2k-sparkle {
+
   0%,
   100% {
     opacity: 0.65;
@@ -189,17 +206,23 @@ h2 em {
   }
 }
 
+
 /* =========================================================
    BOTÕES
 ========================================================= */
 
 .button {
   display: inline-flex;
+
   align-items: center;
   justify-content: center;
+
   gap: 0.65rem;
+
   padding: 0.9rem 1.35rem;
+
   border-radius: 999px;
+
   font-size: 0.88rem;
   font-weight: 700;
 
@@ -216,16 +239,21 @@ h2 em {
 .button-primary {
   background: var(--purple);
   color: var(--white);
-  box-shadow: 0 8px 20px rgba(166, 13, 236, 0.25);
+
+  box-shadow:
+    0 8px 20px rgba(166, 13, 236, 0.25);
 }
 
 .button-primary:hover {
   background: var(--purple-dark);
-  box-shadow: 0 12px 30px rgba(166, 13, 236, 0.35);
+
+  box-shadow:
+    0 12px 30px rgba(166, 13, 236, 0.35);
 }
 
 .button-ghost {
   border: 1px solid rgba(166, 13, 236, 0.8);
+
   background: transparent;
   color: var(--white);
 }
@@ -234,16 +262,21 @@ h2 em {
   background: rgba(166, 13, 236, 0.12);
 }
 
+
 /* =========================================================
    LINKS
 ========================================================= */
 
 .text-link {
   display: inline-flex;
+
   align-items: center;
   gap: 0.6rem;
+
   padding-bottom: 0.2rem;
+
   border-bottom: 1px solid currentColor;
+
   font-weight: 700;
 
   transition:
@@ -256,6 +289,7 @@ h2 em {
   gap: 0.8rem;
 }
 
+
 /* =========================================================
    HEADER
 ========================================================= */
@@ -263,6 +297,7 @@ h2 em {
 .site-header {
   position: fixed;
   inset: 0 0 auto;
+
   z-index: 1000;
 
   transition:
@@ -272,16 +307,22 @@ h2 em {
 
 .site-header.scrolled {
   background: rgba(0, 0, 0, 0.82);
+
   backdrop-filter: blur(15px);
-  box-shadow: 0 3px 18px rgba(0, 0, 0, 0.3);
+
+  box-shadow:
+    0 3px 18px rgba(0, 0, 0, 0.3);
 }
 
 .navbar {
   min-height: 5.5rem;
+
   display: flex;
+
   align-items: center;
   justify-content: space-between;
 }
+
 
 /* =========================================================
    LOGO
@@ -289,10 +330,14 @@ h2 em {
 
 .brand {
   position: relative;
+
   z-index: 1002;
+
   font-family: var(--serif);
+
   font-size: 1.35rem;
   font-weight: 700;
+
   letter-spacing: -0.06em;
 }
 
@@ -300,14 +345,18 @@ h2 em {
   color: var(--purple);
 }
 
+
 /* =========================================================
    MENU DESKTOP
 ========================================================= */
 
 .nav-links {
   display: flex;
+
   align-items: center;
+
   gap: 1.35rem;
+
   font-size: 0.78rem;
   font-weight: 700;
 }
@@ -334,31 +383,45 @@ h2 em {
   color: var(--purple);
 }
 
+
 /* =========================================================
    BOTÃO MOBILE
 ========================================================= */
 
 .mobile-menu-button {
   display: none;
+
   width: 2.6rem;
   height: 2.6rem;
+
   align-items: center;
   justify-content: center;
+
   flex-direction: column;
+
   gap: 5px;
+
   border: 0;
+
   background: transparent;
+
   padding: 0;
+
   cursor: pointer;
+
   position: relative;
+
   z-index: 1002;
 }
 
 .mobile-menu-button span {
   display: block;
+
   width: 1.2rem;
   height: 2px;
+
   background: var(--white);
+
   border-radius: 10px;
 
   transition:
@@ -371,22 +434,28 @@ h2 em {
   background: var(--purple);
 }
 
+
 /* =========================================================
    HERO
 ========================================================= */
 
 .hero {
   min-height: 48rem;
+
   padding-top: 10rem;
+
   position: relative;
+
   overflow: hidden;
 
   background:
+
     radial-gradient(
       circle at 87% 25%,
       rgba(166, 13, 236, 0.35) 0,
       transparent 22rem
     ),
+
     linear-gradient(
       135deg,
       #000000,
@@ -396,79 +465,88 @@ h2 em {
 
 .hero-grid {
   display: grid;
+
   grid-template-columns: 1.1fr 0.9fr;
+
   align-items: center;
+
   gap: 3rem;
 }
 
 .hero-description {
   max-width: 30rem;
+
   color: var(--gray);
+
   font-size: 1.05rem;
 }
 
 .hero-actions {
   display: flex;
+
   flex-wrap: wrap;
+
   gap: 0.75rem;
+
   margin-top: 2rem;
 }
 
 .hero-note {
   margin-top: 2rem;
+
   color: var(--gray);
+
   font-size: 0.75rem;
+
   letter-spacing: 0.1em;
+
   text-transform: uppercase;
 }
 
+
 /* =========================================================
    HERO ART
+   APENAS UM CARD
 ========================================================= */
 
 .hero-art {
   width: 100%;
   height: 25rem;
+
   position: relative;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
   transform: translateX(1.5rem);
 }
 
-/* Cards sobrepostos */
 
-.art-card {
-  position: absolute;
-  border-radius: 2.2rem;
-}
-
-.art-card-back {
-  width: 68%;
-  height: 75%;
-  right: 0;
-  top: 11%;
-  transform: rotate(9deg);
-
-  background: linear-gradient(
-    130deg,
-    #1a0024,
-    #4b0870
-  );
-
-  border: 1px solid rgba(166, 13, 236, 0.45);
-}
+/* ÚNICO QUADRADO */
 
 .art-card-main {
+  position: relative;
+
   width: 68%;
   height: 80%;
-  right: 8%;
-  top: 4%;
+
+  right: auto;
+  top: auto;
+
   overflow: hidden;
 
+  border-radius: 2.2rem;
+
   background:
+
     radial-gradient(
       circle at 50% 50%,
       rgba(166, 13, 236, 0.12),
       transparent 65%
     ),
+
     linear-gradient(
       135deg,
       #111111,
@@ -478,157 +556,229 @@ h2 em {
   border: 1px solid rgba(166, 13, 236, 0.55);
 
   box-shadow:
+
     0 18px 50px rgba(166, 13, 236, 0.18),
+
     inset 0 0 35px rgba(166, 13, 236, 0.08);
 }
 
-.art-card-main .art-star {
+
+/* Brilho interno */
+
+.art-card-main::after {
+  content: "";
+
   position: absolute;
-  z-index: 2;
+
+  inset: 0;
+
+  pointer-events: none;
+
+  background:
+    radial-gradient(
+      circle at 50% 50%,
+      rgba(166, 13, 236, 0.12),
+      transparent 55%
+    );
+
+  z-index: 0;
 }
 
-/* Estrelas dentro do card */
 
-.art-star {
+/* =========================================================
+   ESTRELAS DO CARD
+========================================================= */
+
+.art-card-main .art-star {
   position: absolute;
+
+  z-index: 2;
+
   display: block;
+
   color: #f5ddff;
+
   text-shadow:
     0 0 5px #ffffff,
     0 0 12px #c86df5,
     0 0 24px #a60dec;
-  animation: y2k-twinkle 3s ease-in-out infinite;
+
+  animation:
+    y2k-twinkle 3s ease-in-out infinite;
+
   pointer-events: none;
 }
 
 .art-star-1 {
   top: 15%;
   left: 18%;
+
   font-size: 1.5rem;
-  animation-delay: 0s;
 }
 
 .art-star-2 {
   top: 25%;
   right: 20%;
+
   font-size: 2rem;
+
   animation-delay: 0.8s;
 }
 
 .art-star-3 {
   top: 48%;
   left: 45%;
+
   font-size: 1rem;
+
   animation-delay: 1.4s;
 }
 
 .art-star-4 {
   bottom: 18%;
   left: 22%;
+
   font-size: 2.2rem;
+
   animation-delay: 0.4s;
 }
 
 .art-star-5 {
   bottom: 25%;
   right: 16%;
+
   font-size: 1.2rem;
+
   animation-delay: 1.8s;
 }
 
 .art-star-6 {
   top: 10%;
   right: 45%;
+
   font-size: 0.8rem;
+
   animation-delay: 1s;
 }
 
 .art-star-7 {
   top: 65%;
   right: 40%;
+
   font-size: 1.7rem;
+
   animation-delay: 2s;
 }
 
 .art-star-8 {
   bottom: 10%;
   right: 48%;
+
   font-size: 0.9rem;
+
   animation-delay: 0.6s;
 }
+
 .art-star-9 {
   top: 35%;
   left: 10%;
+
   font-size: 1rem;
+
   animation-delay: 0.7s;
 }
 
 .art-star-10 {
   top: 40%;
   right: 8%;
+
   font-size: 1.5rem;
+
   animation-delay: 1.3s;
 }
 
 .art-star-11 {
   top: 75%;
   left: 10%;
+
   font-size: 1.8rem;
+
   animation-delay: 1.8s;
 }
 
 .art-star-12 {
   top: 12%;
   left: 65%;
+
   font-size: 1.1rem;
+
   animation-delay: 0.5s;
 }
 
 .art-star-13 {
   top: 55%;
   left: 28%;
+
   font-size: 0.8rem;
+
   animation-delay: 2s;
 }
 
 .art-star-14 {
   bottom: 8%;
   right: 30%;
+
   font-size: 1.4rem;
+
   animation-delay: 1.1s;
 }
 
 .art-star-15 {
   top: 85%;
   left: 55%;
+
   font-size: 1rem;
+
   animation-delay: 0.3s;
 }
 
 .art-star-16 {
   top: 30%;
   left: 52%;
+
   font-size: 0.7rem;
+
   animation-delay: 1.6s;
 }
 
-/* Formas decorativas do fundo */
+
+/* =========================================================
+   ELEMENTOS Y2K DO FUNDO
+========================================================= */
 
 .hero-symbols {
   position: absolute;
+
   inset: 0;
+
   pointer-events: none;
+
   z-index: 1;
+
   overflow: hidden;
 }
 
 .symbol {
   position: absolute;
+
   display: block;
 
   color: #e8c3ff;
+
   font-family: Georgia, "Times New Roman", serif;
+
   font-weight: 400;
+
   white-space: nowrap;
 
   text-shadow:
@@ -643,40 +793,40 @@ h2 em {
     symbol-glow 2.8s ease-in-out infinite alternate;
 }
 
-/* Símbolo da esquerda */
-
 .symbol-one {
   left: 4%;
   bottom: 12%;
-  font-size: 1.8rem;
-  transform: rotate(-8deg);
-  animation-delay: 0s;
-}
 
-/* Símbolo superior */
+  font-size: 1.8rem;
+
+  transform: rotate(-8deg);
+}
 
 .symbol-two {
   top: 16%;
   left: 48%;
+
   font-size: 1.5rem;
+
   transform: rotate(6deg);
+
   animation-delay: 1.2s;
 }
-
-/* Símbolo da direita */
 
 .symbol-three {
   right: 5%;
   bottom: 22%;
+
   font-size: 1.7rem;
+
   transform: rotate(10deg);
+
   animation-delay: 2s;
 }
 
 
-/* Movimento suave */
-
 @keyframes symbol-float {
+
   0%,
   100% {
     translate: 0 0;
@@ -687,7 +837,9 @@ h2 em {
   }
 }
 
+
 @keyframes symbol-glow {
+
   0% {
     opacity: 0.55;
     filter: brightness(0.9);
@@ -710,24 +862,31 @@ h2 em {
 
 .services-grid {
   display: grid;
+
   grid-template-columns: repeat(3, 1fr);
+
   gap: 1rem;
 }
 
 .service-card {
   min-height: 15rem;
+
   display: flex;
+
   flex-direction: column;
+
   padding: 1.45rem;
 
   border: 1px solid var(--border);
+
   border-radius: var(--radius);
 
-  background: linear-gradient(
-    145deg,
-    #111111,
-    #1b001f
-  );
+  background:
+    linear-gradient(
+      145deg,
+      #111111,
+      #1b001f
+    );
 
   transition:
     transform 0.25s ease,
@@ -737,7 +896,9 @@ h2 em {
 
 .service-card:hover {
   transform: translateY(-5px);
-  border-color: rgba(200, 109, 245, 0.8);
+
+  border-color:
+    rgba(200, 109, 245, 0.8);
 
   box-shadow:
     0 12px 35px rgba(166, 13, 236, 0.22),
@@ -746,35 +907,48 @@ h2 em {
 
 .service-number {
   color: var(--purple-dark);
+
   font-family: var(--serif);
+
   font-size: 2rem;
 }
 
 .service-card h3 {
   margin: 0.7rem 0;
+
   font-family: var(--serif);
+
   font-size: 1.55rem;
+
   font-weight: 400;
+
   line-height: 1.05;
 }
 
 .service-duration {
   margin-bottom: 0.7rem;
+
   color: var(--gray);
+
   font-size: 0.77rem;
 }
 
 .service-price {
   margin-bottom: auto;
+
   font-size: 1.2rem;
+
   font-weight: 700;
 }
 
 .service-card .text-link {
   align-self: flex-start;
+
   margin-top: 1rem;
+
   font-size: 0.8rem;
 }
+
 
 /* =========================================================
    GALERIA
@@ -786,24 +960,34 @@ h2 em {
 
 .gallery-grid {
   display: grid;
+
   grid-template-columns: repeat(4, 1fr);
+
   grid-auto-rows: 11rem;
+
   gap: 1rem;
 }
 
 .gallery-item {
   position: relative;
+
   padding: 0;
+
   border: 0;
+
   border-radius: 1.25rem;
+
   overflow: hidden;
+
   cursor: zoom-in;
+
   background: #1a001f;
 }
 
 .gallery-item img {
   width: 100%;
   height: 100%;
+
   object-fit: cover;
 
   transition:
@@ -813,56 +997,74 @@ h2 em {
 
 .gallery-item:hover img {
   transform: scale(1.06);
+
   filter: saturate(1.1);
 }
 
 .gallery-item span {
   position: absolute;
+
   left: 0.8rem;
   bottom: 0.65rem;
+
   color: var(--white);
+
   font-size: 0.8rem;
-  text-shadow: 0 1px 4px #000;
+
+  text-shadow:
+    0 1px 4px #000;
 }
 
 .gallery-tall {
   grid-row: span 2;
 }
 
+
 /* =========================================================
-   SOBRE
+   SOBRE / ESSÊNCIA
 ========================================================= */
 
 .about {
-  background: linear-gradient(
-    120deg,
-    #000000,
-    #16001f
-  );
+  background:
+    linear-gradient(
+      120deg,
+      #000000,
+      #16001f
+    );
 }
 
 .about-grid {
   display: grid;
+
   grid-template-columns: 0.75fr 1.25fr;
+
   align-items: center;
+
   gap: 8rem;
 }
 
 .about-mark {
   aspect-ratio: 1;
+
   display: flex;
+
   flex-direction: column;
+
   align-items: center;
   justify-content: center;
+
   max-width: 25rem;
+
   border-radius: 50%;
+
   color: var(--purple);
 
-  background: radial-gradient(
-    circle at 35% 25%,
-    #2b0038,
-    #090009
-  );
+  background:
+    radial-gradient(
+      circle at 35% 25%,
+      #2b0038,
+      #090009
+    );
 
   box-shadow:
     inset 0 0 0 0.7rem rgba(166, 13, 236, 0.15),
@@ -873,23 +1075,32 @@ h2 em {
 
 .about-mark p {
   margin: 1rem 0;
+
   font-family: var(--serif);
+
   font-size: 2rem;
+
   line-height: 0.86;
+
   text-align: center;
 }
 
 .about-mark i {
   font-size: 2.7rem;
+
   font-weight: 700;
 }
 
 .about-text {
   max-width: 34rem;
+
   color: var(--gray);
+
   font-size: 1.05rem;
+
   margin-bottom: 2rem;
 }
+
 
 /* =========================================================
    BENEFÍCIOS
@@ -901,32 +1112,43 @@ h2 em {
 
 .benefits-grid {
   display: grid;
+
   grid-template-columns: repeat(4, 1fr);
+
   gap: 1rem;
 }
 
 .benefit {
   padding: 1.4rem 1.1rem;
-  border-top: 1px solid var(--purple);
+
+  border-top:
+    1px solid var(--purple);
 }
 
 .benefit > span {
   color: var(--purple);
+
   font-size: 1.5rem;
 }
 
 .benefit h3 {
   margin: 0.8rem 0;
+
   font-family: var(--serif);
+
   font-size: 1.35rem;
+
   font-weight: 400;
+
   line-height: 1.1;
 }
 
 .benefit p {
   color: var(--gray);
+
   font-size: 0.85rem;
 }
+
 
 /* =========================================================
    HORÁRIOS
@@ -938,32 +1160,49 @@ h2 em {
 
 .hours-wrap {
   display: grid;
+
   grid-template-columns: 1fr 1fr;
+
   align-items: center;
+
   gap: 5rem;
 }
 
 .hours-lead {
   max-width: 24rem;
+
   color: var(--gray);
+
   margin-bottom: 2rem;
 }
 
 .hours-card {
   padding: 2rem;
-  border: 1px solid rgba(166, 13, 236, 0.35);
+
+  border:
+    1px solid rgba(166, 13, 236, 0.35);
+
   border-radius: var(--radius);
+
   background: var(--surface);
+
   box-shadow: var(--shadow);
 }
 
 .hours-highlight {
   padding-bottom: 1rem;
-  border-bottom: 1px solid var(--border);
+
+  border-bottom:
+    1px solid var(--border);
+
   color: var(--purple);
+
   font-size: 0.7rem;
+
   font-weight: 700;
+
   letter-spacing: 0.1em;
+
   text-transform: uppercase;
 }
 
@@ -973,27 +1212,37 @@ h2 em {
 
 .hours-card dl > div {
   padding: 1rem 0;
-  border-bottom: 1px solid var(--border);
+
+  border-bottom:
+    1px solid var(--border);
 }
 
 .hours-card dl > div:last-child {
   border: 0;
+
   padding-bottom: 0;
 }
 
 .hours-card dt {
   color: var(--gray);
+
   font-size: 0.67rem;
+
   font-weight: 700;
+
   letter-spacing: 0.08em;
+
   text-transform: uppercase;
 }
 
 .hours-card dd {
   margin: 0.15rem 0 0;
+
   font-family: var(--serif);
+
   font-size: 1.7rem;
 }
+
 
 /* =========================================================
    CONTATO
@@ -1001,22 +1250,29 @@ h2 em {
 
 .contact {
   padding-top: 8rem;
+
   background: var(--black);
 }
 
 .contact-card {
   position: relative;
+
   padding: 5rem 1.5rem;
+
   overflow: hidden;
+
   border-radius: 2rem;
+
   text-align: center;
 
   background:
+
     radial-gradient(
       circle at 80% 20%,
       rgba(166, 13, 236, 0.35),
       transparent 16rem
     ),
+
     linear-gradient(
       135deg,
       #16001f,
@@ -1030,17 +1286,24 @@ h2 em {
 
 .contact-card > p:not(.eyebrow) {
   max-width: 31rem;
+
   margin: 0 auto;
+
   color: #dddddd;
 }
 
 .contact-actions {
   display: flex;
+
   justify-content: center;
+
   flex-wrap: wrap;
+
   gap: 0.75rem;
+
   margin-top: 2rem;
 }
+
 
 /* =========================================================
    FOOTER
@@ -1048,27 +1311,36 @@ h2 em {
 
 .footer {
   padding: 2rem 0 1.2rem;
+
   background: var(--black);
 }
 
 .footer-row {
   display: flex;
+
   align-items: center;
+
   justify-content: space-between;
+
   gap: 1rem;
+
   padding-bottom: 1.5rem;
-  border-bottom: 1px solid var(--border);
+
+  border-bottom:
+    1px solid var(--border);
 }
 
 .footer p,
 .footer a,
 .copyright {
   color: var(--gray);
+
   font-size: 0.75rem;
 }
 
 .footer-links {
   display: flex;
+
   gap: 1rem;
 }
 
@@ -1078,8 +1350,10 @@ h2 em {
 
 .copyright {
   margin: 1.2rem 0 0;
+
   text-align: center;
 }
+
 
 /* =========================================================
    MODAL DE AGENDAMENTO
@@ -1087,44 +1361,70 @@ h2 em {
 
 .booking-modal {
   width: min(92vw, 560px);
+
   max-width: 560px;
+
   max-height: 90vh;
+
   padding: 0;
-  border: 1px solid var(--border);
+
+  border:
+    1px solid var(--border);
+
   border-radius: 1.6rem;
+
   background: #090909;
+
   color: var(--white);
 
-  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.6);
+  box-shadow:
+    0 30px 90px rgba(0, 0, 0, 0.6);
+
   overflow: hidden;
 }
 
 .booking-modal::backdrop {
   background: rgba(0, 0, 0, 0.75);
+
   backdrop-filter: blur(8px);
 }
 
 .booking-modal-content {
   position: relative;
+
   max-height: 90vh;
+
   overflow-y: auto;
+
   padding: 2rem;
 }
 
 .modal-close {
   position: absolute;
+
   top: 1rem;
   right: 1rem;
+
   width: 2.3rem;
   height: 2.3rem;
+
   display: grid;
+
   place-items: center;
-  border: 1px solid var(--border);
+
+  border:
+    1px solid var(--border);
+
   border-radius: 50%;
+
   background: #161616;
+
   color: var(--white);
+
   font-size: 1.5rem;
+
   line-height: 1;
+
   cursor: pointer;
 
   transition:
@@ -1134,23 +1434,29 @@ h2 em {
 
 .modal-close:hover {
   background: var(--purple);
+
   color: var(--white);
 }
 
 .booking-header {
   padding-right: 2.5rem;
+
   margin-bottom: 1.5rem;
 }
 
 .booking-header h2 {
   margin-bottom: 0.7rem;
-  font-size: clamp(2rem, 7vw, 3rem);
+
+  font-size:
+    clamp(2rem, 7vw, 3rem);
 }
 
 .booking-header p:last-child {
   margin-bottom: 0;
+
   color: var(--gray);
 }
+
 
 /* =========================================================
    FORMULÁRIO
@@ -1158,29 +1464,41 @@ h2 em {
 
 #booking-form {
   display: grid;
+
   gap: 1rem;
 }
 
 .form-field {
   display: grid;
+
   gap: 0.45rem;
 }
 
 .form-field label {
   font-size: 0.78rem;
+
   font-weight: 700;
 }
 
 .form-field input,
 .form-field select {
   width: 100%;
+
   min-height: 3rem;
+
   padding: 0.85rem 0.95rem;
-  border: 1px solid var(--border);
+
+  border:
+    1px solid var(--border);
+
   border-radius: 0.9rem;
+
   background: #111111;
+
   color: var(--white);
+
   font: inherit;
+
   outline: none;
 
   transition:
@@ -1199,21 +1517,29 @@ h2 em {
 .form-field input:focus,
 .form-field select:focus {
   border-color: var(--purple);
-  box-shadow: 0 0 0 3px rgba(166, 13, 236, 0.12);
+
+  box-shadow:
+    0 0 0 3px rgba(166, 13, 236, 0.12);
 }
 
 .form-row {
   display: grid;
+
   grid-template-columns: 1fr 1fr;
+
   gap: 1rem;
 }
 
 .booking-submit {
   width: 100%;
+
   margin-top: 0.25rem;
+
   border: 0;
+
   cursor: pointer;
 }
+
 
 /* =========================================================
    LIGHTBOX
@@ -1221,61 +1547,86 @@ h2 em {
 
 .lightbox {
   width: min(90vw, 900px);
+
   max-width: 900px;
+
   height: min(90vh, 700px);
+
   padding: 3rem;
+
   border: 0;
+
   border-radius: 1rem;
+
   background: rgba(10, 10, 10, 0.97);
+
   color: var(--white);
 }
 
 .lightbox::backdrop {
   background: rgba(0, 0, 0, 0.85);
+
   backdrop-filter: blur(6px);
 }
 
 .lightbox figure {
   width: 100%;
   height: 100%;
+
   margin: 0;
+
   display: flex;
+
   align-items: center;
   justify-content: center;
+
   flex-direction: column;
+
   gap: 1rem;
 }
 
 .lightbox figure img {
   max-width: 100%;
-  max-height: calc(100% - 2rem);
+
+  max-height:
+    calc(100% - 2rem);
+
   object-fit: contain;
+
   border-radius: 1rem;
 }
 
 .lightbox figcaption {
   color: var(--gray);
+
   font-size: 0.8rem;
 }
 
 .lightbox-close,
 .lightbox-nav {
   position: absolute;
+
   border: 0;
+
   background: transparent;
+
   color: var(--white);
+
   cursor: pointer;
+
   z-index: 2;
 }
 
 .lightbox-close {
   top: 0.7rem;
   right: 1rem;
+
   font-size: 2.2rem;
 }
 
 .lightbox-nav {
   top: 50%;
+
   font-size: 2rem;
 }
 
@@ -1292,12 +1643,14 @@ h2 em {
   color: var(--purple);
 }
 
+
 /* =========================================================
    ANIMAÇÕES DE ENTRADA
 ========================================================= */
 
 .reveal {
   opacity: 0;
+
   transform: translateY(16px);
 
   transition:
@@ -1307,11 +1660,13 @@ h2 em {
 
 .reveal.visible {
   opacity: 1;
+
   transform: none;
 }
 
+
 /* =========================================================
-   BRILHO DINÂMICO — ELEMENTOS DO SITE
+   BRILHO DINÂMICO
 ========================================================= */
 
 .button,
@@ -1323,11 +1678,12 @@ h2 em {
 .hours-card,
 .contact-card {
   position: relative;
+
   isolation: isolate;
+
   overflow: hidden;
 }
 
-/* Camada de brilho que acompanha o cursor */
 .button::before,
 .text-link::before,
 .service-card::before,
@@ -1337,23 +1693,34 @@ h2 em {
 .hours-card::before,
 .contact-card::before {
   content: "";
+
   position: absolute;
+
   inset: 0;
+
   z-index: 0;
+
   pointer-events: none;
+
   opacity: 0;
 
-  background: radial-gradient(
-    circle 150px at var(--glow-x, 50%) var(--glow-y, 50%),
-    rgba(200, 109, 245, 0.35),
-    rgba(166, 13, 236, 0.12) 45%,
-    transparent 75%
-  );
+  background:
+    radial-gradient(
+      circle 150px at
+      var(--glow-x, 50%)
+      var(--glow-y, 50%),
 
-  transition: opacity 0.3s ease;
+      rgba(200, 109, 245, 0.35),
+
+      rgba(166, 13, 236, 0.12) 45%,
+
+      transparent 75%
+    );
+
+  transition:
+    opacity 0.3s ease;
 }
 
-/* Conteúdo acima da iluminação */
 .button > *,
 .text-link > *,
 .service-card > *,
@@ -1363,10 +1730,10 @@ h2 em {
 .hours-card > *,
 .contact-card > * {
   position: relative;
+
   z-index: 1;
 }
 
-/* Ativa o brilho ao passar o mouse */
 .button:hover::before,
 .text-link:hover::before,
 .service-card:hover::before,
@@ -1378,37 +1745,299 @@ h2 em {
   opacity: 1;
 }
 
-/* Movimento de profundidade durante a rolagem */
-.floating-star,
-.hero-orb {
-  translate: 0 var(--parallax-y, 0px);
+
+/* =========================================================
+   SOBRE A SOFIA
+========================================================= */
+
+.about-sofia {
+  position: relative;
+
+  width: 100%;
+
+  padding: 110px 20px;
+
+  background:
+
+    radial-gradient(
+      circle at 15% 50%,
+      rgba(166, 13, 236, 0.12),
+      transparent 35%
+    ),
+
+    #000;
+
+  overflow: hidden;
 }
 
-/* Respeita quem prefere menos movimento */
-@media (prefers-reduced-motion: reduce) {
-  .floating-star,
-  .hero-orb {
-    translate: none;
-  }
+.about-sofia::before {
+  content: "";
+
+  position: absolute;
+
+  width: 220px;
+  height: 220px;
+
+  border:
+    1px solid rgba(166, 13, 236, 0.18);
+
+  border-radius: 50%;
+
+  top: 10%;
+  right: -100px;
+
+  box-shadow:
+    0 0 30px rgba(166, 13, 236, 0.08),
+    inset 0 0 30px rgba(166, 13, 236, 0.05);
 }
+
+.about-sofia-container {
+  position: relative;
+
+  z-index: 2;
+
+  width: 100%;
+
+  max-width: 1100px;
+
+  margin: 0 auto;
+
+  display: grid;
+
+  grid-template-columns:
+    0.9fr 1.1fr;
+
+  align-items: center;
+
+  gap: 80px;
+}
+
+
+/* FOTO */
+
+.about-sofia-image {
+display: none;
+}
+
+.about-sofia-frame {
+  position: relative;
+
+  width: 100%;
+
+  aspect-ratio: 4 / 5;
+
+  padding: 8px;
+
+  border:
+    1px solid rgba(166, 13, 236, 0.7);
+
+  border-radius: 28px;
+
+  background: #0b0b0b;
+
+  box-shadow:
+    0 0 25px rgba(166, 13, 236, 0.22),
+    0 0 70px rgba(166, 13, 236, 0.08);
+
+  transform: rotate(-2deg);
+
+  overflow: hidden;
+}
+
+.about-sofia-frame::before {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  border:
+    1px solid rgba(255, 255, 255, 0.08);
+
+  border-radius: 22px;
+
+  pointer-events: none;
+
+  z-index: 2;
+}
+
+.about-sofia-frame img {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  border-radius: 20px;
+
+  filter:
+    saturate(0.95)
+    contrast(1.05);
+}
+
+
+/* GLOW */
+
+.about-sofia-image-glow {
+  position: absolute;
+
+  width: 75%;
+  height: 75%;
+
+  left: 12%;
+  top: 15%;
+
+  background:
+    rgba(166, 13, 236, 0.25);
+
+  filter: blur(70px);
+
+  border-radius: 50%;
+
+  pointer-events: none;
+}
+
+
+/* ESTRELINHAS */
+
+.about-sofia-star {
+  position: absolute;
+
+  color: #a60dec;
+
+  text-shadow:
+    0 0 8px rgba(166, 13, 236, 0.8),
+    0 0 20px rgba(166, 13, 236, 0.5);
+
+  z-index: 4;
+
+  pointer-events: none;
+}
+
+.star-one {
+  top: -18px;
+
+  right: 5px;
+
+  font-size: 30px;
+}
+
+.star-two {
+  bottom: 25px;
+
+  left: -20px;
+
+  font-size: 22px;
+}
+
+
+/* TEXTO */
+
+.about-sofia-content {
+  width: 100px;
+}
+
+.about-sofia-label {
+  display: inline-block;
+
+  margin-bottom: 18px;
+
+  font-family: Arial, sans-serif;
+
+  font-size: 0.72rem;
+
+  font-weight: 700;
+
+  letter-spacing: 0.25em;
+
+  color: #a60dec;
+}
+
+.about-sofia-content h2 {
+  margin: 0 0 28px;
+
+  font-family: Georgia, serif;
+
+  font-size:
+    clamp(2.5rem, 5vw, 4.2rem);
+
+  font-weight: 400;
+
+  line-height: 1.05;
+
+  color: #fff;
+}
+
+.about-sofia-content h2 span {
+  display: block;
+
+  color: #a60dec;
+
+  text-shadow:
+    0 0 12px rgba(166, 13, 236, 0.35);
+}
+
+.about-sofia-content p {
+  margin: 0 0 18px;
+
+  font-family: Arial, sans-serif;
+
+  font-size: 1rem;
+
+  line-height: 1.8;
+
+  color: #b8b8b8;
+}
+
+.about-sofia-signature {
+  display: flex;
+
+  flex-direction: column;
+
+  margin-top: 32px;
+
+  font-family: Georgia, serif;
+}
+
+.about-sofia-signature span {
+  margin-bottom: 4px;
+
+  font-size: 0.85rem;
+
+  color: #777;
+}
+
+.about-sofia-signature strong {
+  font-size: 1.25rem;
+
+  font-weight: 400;
+
+  color: #fff;
+}
+
 
 /* =========================================================
    TABLET
 ========================================================= */
 
 @media (max-width: 900px) {
+
   .hero-grid {
     grid-template-columns: 1fr;
   }
 
   .hero-art {
     width: min(25rem, 100%);
+
     margin: 0 auto;
+
     transform: none;
   }
 
   .about-grid {
     grid-template-columns: 1fr;
+
     gap: 3rem;
   }
 
@@ -1418,71 +2047,24 @@ h2 em {
 
   .hours-wrap {
     grid-template-columns: 1fr;
+
     gap: 3rem;
   }
 
   .benefits-grid {
     grid-template-columns: repeat(2, 1fr);
   }
-}
 
-/* ═══════════════════════════════════════════════
-   FLUTUAÇÃO DOS CARDS DE SERVIÇOS
-   ═══════════════════════════════════════════════ */
+  .about-sofia-container {
+    grid-template-columns: 1fr;
 
-.service-card-content {
-  width: 100%;
-  height: 100%;
-  animation: service-card-float 5s ease-in-out infinite;
-}
-
-/* Pequenas diferenças entre os cards */
-.service-card:nth-child(2) .service-card-content {
-  animation-delay: -1.2s;
-}
-
-.service-card:nth-child(3) .service-card-content {
-  animation-delay: -2.4s;
-}
-
-.service-card:nth-child(4) .service-card-content {
-  animation-delay: -3.6s;
-}
-
-.service-card:nth-child(5) .service-card-content {
-  animation-delay: -4.8s;
-}
-
-.service-card:nth-child(6) .service-card-content {
-  animation-delay: -6s;
-}
-
-@keyframes service-card-float {
-  0%,
-  100% {
-    transform: translateY(-3px) rotate(-0.25deg);
+    gap: 55px;
   }
 
-  50% {
-    transform: translateY(3px) rotate(0.25deg);
+  .about-sofia-image {
+    max-width: 390px;
   }
 }
-
-/* Respeita quem prefere menos movimento */
-@media (prefers-reduced-motion: reduce) {
-  .service-card-content {
-    animation: none;
-  }
-}
-
-
-
-
-
-
-
-
-
 
 
 /* =========================================================
@@ -1490,6 +2072,7 @@ h2 em {
 ========================================================= */
 
 @media (max-width: 760px) {
+
   .container {
     width: min(100% - 2rem, 1120px);
   }
@@ -1498,7 +2081,8 @@ h2 em {
     padding: 5rem 0;
   }
 
-  /* HEADER MOBILE */
+
+  /* HEADER */
 
   .navbar {
     min-height: 4.8rem;
@@ -1510,23 +2094,36 @@ h2 em {
 
   .nav-links {
     position: absolute;
+
     top: 4.8rem;
+
     left: 1rem;
     right: 1rem;
 
     display: flex;
+
     flex-direction: column;
+
     align-items: stretch;
+
     gap: 0.15rem;
+
     padding: 0.7rem;
 
     background: #090909;
-    border: 1px solid rgba(166, 13, 236, 0.4);
+
+    border:
+      1px solid rgba(166, 13, 236, 0.4);
+
     border-radius: 1rem;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
+
+    box-shadow:
+      0 20px 50px rgba(0, 0, 0, 0.7);
 
     opacity: 0;
+
     visibility: hidden;
+
     transform: translateY(-0.5rem);
 
     transition:
@@ -1537,57 +2134,153 @@ h2 em {
 
   .nav-links.open {
     opacity: 1;
+
     visibility: visible;
+
     transform: none;
   }
 
   .nav-links > a {
     padding: 0.9rem 1rem;
+
     border-radius: 0.7rem;
   }
 
   .nav-links > a:not(.nav-cta):hover {
-    background: rgba(166, 13, 236, 0.1);
+    background:
+      rgba(166, 13, 236, 0.1);
   }
 
   .nav-links .nav-cta {
     margin: 0.2rem 0;
-    border-top: 1px solid rgba(166, 13, 236, 0.25);
+
+    border-top:
+      1px solid rgba(166, 13, 236, 0.25);
+
     border-radius: 0;
+
     padding-top: 1rem;
+
     color: var(--purple);
   }
+
 
   /* HERO */
 
   .hero {
     min-height: auto;
+
     padding-top: 8rem;
   }
 
   h1 {
-    font-size: clamp(3.3rem, 15vw, 5rem);
+    font-size:
+      clamp(3.3rem, 15vw, 5rem);
   }
 
   h2 {
-    font-size: clamp(2.5rem, 12vw, 4rem);
+    font-size:
+      clamp(2.5rem, 12vw, 4rem);
   }
 
-  .hero-actions {
-    flex-direction: column;
+    .hero-actions {
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    flex-wrap: wrap
   }
 
   .hero-actions .button {
     width: 100%;
   }
 
-  .hero-art {
-  height: 19rem;
-  width: calc(100% + 1rem);
-  max-width: 25rem;
-  margin: 0 auto;
-  transform: translateX(0.5rem);
+   .hero-note {
+    text-align: center;
   }
+
+  /*
+     TEXTO PRIMEIRO
+     CARD LOGO ABAIXO
+  */
+
+  .hero-grid {
+
+   display: flex;
+    flex-direction: column;
+
+    width: 100%;
+    max-width: 100%;
+
+    gap: 0.8rem;
+
+    align-items: center;
+  }
+
+
+
+.hero-copy {
+    width: 100%;
+    max-width: 22rem;
+
+    margin: 0 auto;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+
+    text-align: center;
+
+  }
+
+   .hero-copy h1 {
+    width: 100%;
+
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+    .hero-copy p {
+    width: 100%;
+    max-width: 22rem;
+
+    margin-left: auto;
+    margin-right: auto;
+
+    text-align: center;
+  }
+
+  .hero-art {
+      width: 100%;
+    max-width: 25rem;
+
+    height: 28rem;
+
+    margin: 0 auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+
+  /*
+     CARD ÚNICO NO CELULAR
+  */
+
+  .art-card-main {
+    width: min(82%, 23rem);
+
+    height: 18rem;
+
+    margin: 0 auto;
+
+    border-radius: 1.8rem;
+  }
+
 
   /* SERVIÇOS */
 
@@ -1597,6 +2290,7 @@ h2 em {
 
   .service-card {
     min-height: 13rem;
+
     padding: 1.1rem;
   }
 
@@ -1604,11 +2298,14 @@ h2 em {
     font-size: 1.25rem;
   }
 
+
   /* GALERIA */
 
   .gallery-grid {
     grid-template-columns: repeat(2, 1fr);
+
     grid-auto-rows: 10rem;
+
     gap: 0.7rem;
   }
 
@@ -1616,11 +2313,68 @@ h2 em {
     grid-row: span 1;
   }
 
+
   /* BENEFÍCIOS */
 
   .benefits-grid {
     grid-template-columns: repeat(2, 1fr);
   }
+
+
+  /* SOBRE A SOFIA */
+
+  .about-sofia {
+    padding: 80px 20px;
+  }
+
+  .about-sofia-container {
+    grid-template-columns: 1fr;
+
+    gap: 55px;
+  }
+
+  .about-sofia-image {
+    width: 82%;
+
+    max-width: 330px;
+  }
+
+  .about-sofia-content {
+    max-width: 100%;
+
+    text-align: center;
+  }
+
+  .about-sofia-label {
+    margin-bottom: 15px;
+  }
+
+  .about-sofia-content h2 {
+    font-size: 2.7rem;
+
+    margin-bottom: 25px;
+  }
+
+  .about-sofia-content p {
+    font-size: 0.95rem;
+
+    line-height: 1.75;
+  }
+
+  .about-sofia-signature {
+    align-items: center;
+
+    margin-top: 28px;
+  }
+
+  .star-one {
+    right: -5px;
+  }
+
+  .star-two {
+    left: -10px;
+  }
+
 
   /* FOOTER */
 
@@ -1630,13 +2384,16 @@ h2 em {
 
   .footer-row > p {
     width: 100%;
+
     order: 3;
   }
+
 
   /* MODAL */
 
   .booking-modal {
     width: calc(100% - 1.5rem);
+
     max-height: 92vh;
   }
 
@@ -1648,12 +2405,16 @@ h2 em {
     grid-template-columns: 1fr;
   }
 
+
   /* LIGHTBOX */
 
   .lightbox {
     width: 94vw;
+
     height: 80vh;
-    padding: 2.5rem 1rem;
+
+    padding:
+      2.5rem 1rem;
   }
 
   .lightbox-prev {
@@ -1663,19 +2424,31 @@ h2 em {
   .lightbox-next {
     right: 0.5rem;
   }
-}
 
-@media (max-width: 760px) {
+
+  /* Y2K */
+
   .hero-symbols .symbol-two {
     top: 7%;
   }
 }
+
+ .hero-grid {
+    gap: 0 !important;
+  }
+
+  .hero-art {
+    margin-top: -0.8rem !important;
+  }
+
+
 
 /* =========================================================
    CELULAR PEQUENO
 ========================================================= */
 
 @media (max-width: 390px) {
+
   .container {
     width: calc(100% - 1.5rem);
   }
@@ -1692,27 +2465,52 @@ h2 em {
     height: 17rem;
   }
 
+  .art-card-main {
+    width: 86%;
+
+    height: 16rem;
+  }
+
   .contact-card {
     padding: 4rem 1rem;
   }
+
+  .about-sofia {
+    padding: 65px 16px;
+  }
+
+  .about-sofia-image {
+    width: 88%;
+  }
+
+  .about-sofia-content h2 {
+    font-size: 2.35rem;
+  }
+
+  .about-sofia-content p {
+    font-size: 0.9rem;
+  }
 }
+
 
 /* =========================================================
    REDUÇÃO DE MOVIMENTO
 ========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
+
   html {
     scroll-behavior: auto;
   }
 
   .reveal {
     opacity: 1;
+
     transform: none;
+
     transition: none;
   }
 
-  .floating-star,
   .sparkle {
     animation: none;
   }
@@ -1732,6 +2530,130 @@ h2 em {
   *::before,
   *::after {
     animation-duration: 0.01ms !important;
+
     transition-duration: 0.01ms !important;
   }
 }
+/* =========================================
+   MOBILE — FOTO DA SOPHIA NO CARD DO HERO
+   ========================================= */
+
+@media (max-width: 760px) {
+
+  /* Mantém o texto como está */
+  .hero-copy {
+    text-align: center;
+  }
+
+  /* Área da imagem */
+    .hero-art {
+    position: relative !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: 28rem !important;
+    margin: 0 auto !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    transform: none !important;
+    left: auto !important;
+    right: auto !important;
+  }
+
+  .hero-art .art-card-main {
+    position: absolute !important;
+
+    width: 72% !important;
+    height: 82% !important;
+
+    left: 50% !important;
+    right: auto !important;
+    top: 50% !important;
+    bottom: auto !important;
+
+    margin: 0 !important;
+
+    transform: translate(-50%, -50%) rotate(-2deg);
+
+    z-index: 3 !important;
+  }
+  }
+
+  /* Remove as estrelas que estavam DENTRO do card */
+  .hero-art .art-card-main .art-star-1,
+  .hero-art .art-card-main .art-star-2,
+  .hero-art .art-card-main .art-star-3,
+  .hero-art .art-card-main .art-star-4,
+  .hero-art .art-card-main .art-star-5,
+  .hero-art .art-card-main .art-star-6,
+  .hero-art .art-card-main .art-star-7,
+  .hero-art .art-card-main .art-star-8,
+  .hero-art .art-card-main .art-star-9,
+  .hero-art .art-card-main .art-star-10,
+  .hero-art .art-card-main .art-star-11,
+  .hero-art .art-card-main .art-star-12,
+  .hero-art .art-card-main .art-star-13,
+  .hero-art .art-card-main .art-star-14,
+  .hero-art .art-card-main .art-star-15,
+  .hero-art .art-card-main .art-star-16 {
+    display: none;
+  }
+
+  /* Esconde o segundo card */
+  .hero-art .art-card-back {
+    display: none;
+  }
+  
+
+    /* SOBRE A SOFIA — REMOVE A SEGUNDA FOTO */
+
+  .about-sofia-image {
+    display: none;
+  }
+
+  .about-sofia-content {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  /* Estrelas ficam FORA da foto */
+  .hero-art::before,
+  .hero-art::after {
+    position: absolute;
+    z-index: 5;
+    color: var(--white);
+    font-family: Georgia, serif;
+    text-shadow:
+      0 0 8px rgba(166, 13, 236, .9),
+      0 0 18px rgba(166, 13, 236, .55);
+    pointer-events: none;
+  }
+
+  .hero-art::before {
+    content: "✦";
+    top: 7%;
+    left: 9%;
+    font-size: 1.5rem;
+  }
+
+  .hero-art::after {
+    content: "✧";
+    bottom: 8%;
+    right: 8%;
+    font-size: 1.7rem;
+  }
+
+  /* Mantém as estrelas flutuantes externas */
+  .hero-art .floating-star {
+    z-index: 6;
+  }
+
+  .hero-art .star-a {
+    top: 12%;
+    right: 10%;
+  }
+
+  .hero-art .star-b {
+    bottom: 15%;
+    left: 9%;
+  }
